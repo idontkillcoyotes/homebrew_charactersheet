@@ -1,0 +1,85 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Control",
+"class": "Attribute",
+"language": "GDScript",
+"path": "res://ui/parts/PartCharacterAttribute.gd"
+}, {
+"base": "Resource",
+"class": "CharacterClassData",
+"language": "GDScript",
+"path": "res://resources/scripts/ClassData.gd"
+}, {
+"base": "Resource",
+"class": "CharacterSheetData",
+"language": "GDScript",
+"path": "res://resources/scripts/CharacterSheetData.gd"
+}, {
+"base": "Resource",
+"class": "Dice",
+"language": "GDScript",
+"path": "res://resources/scripts/Dice.gd"
+}, {
+"base": "Resource",
+"class": "Item",
+"language": "GDScript",
+"path": "res://resources/scripts/Item.gd"
+}, {
+"base": "Item",
+"class": "ItemEquipable",
+"language": "GDScript",
+"path": "res://resources/scripts/ItemEquipable.gd"
+}, {
+"base": "Item",
+"class": "ItemWeapon",
+"language": "GDScript",
+"path": "res://resources/scripts/ItemWeapon.gd"
+}, {
+"base": "LineEdit",
+"class": "NumberInput",
+"language": "GDScript",
+"path": "res://ui/components/ComponentNumberImput.gd"
+} ]
+_global_script_class_icons={
+"Attribute": "",
+"CharacterClassData": "",
+"CharacterSheetData": "",
+"Dice": "",
+"Item": "",
+"ItemEquipable": "",
+"ItemWeapon": "",
+"NumberInput": ""
+}
+
+[application]
+
+config/name="CharacterSheet"
+run/main_scene="res://MainUI.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+GameDataManager="*res://autoload/GameDataManager.gd"
+CharacterDataManager="*res://autoload/CharacterDataManager.gd"
+
+[display]
+
+window/size/width=1280
+window/size/height=720
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"
