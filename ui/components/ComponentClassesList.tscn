@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://ui/components/ComponentClassesList.gd" type="Script" id=1]
+
+[node name="ClassesList" type="ItemList"]
+margin_right = 404.0
+margin_bottom = 302.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="item_selected" from="." to="." method="_on_ClassesList_item_selected"]
+[connection signal="nothing_selected" from="." to="." method="_on_ClassesList_nothing_selected"]

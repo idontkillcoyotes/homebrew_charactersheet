@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ui/MenuFile.gd" type="Script" id=1]
+[ext_resource path="res://ui/MenuBarUI.gd" type="Script" id=2]
+
+[node name="MenuBar" type="PanelContainer"]
+anchor_right = 1.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 0, 40 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 1273.0
+margin_bottom = 33.0
+
+[node name="MenuFile" type="MenuButton" parent="HBoxContainer"]
+margin_right = 60.0
+margin_bottom = 26.0
+text = "Archivo"
+items = [ "Nuevo personaje", null, 0, false, false, 0, 0, null, "", false, "Cargar personaje", null, 0, false, false, 1, 0, null, "", false, "", null, 0, false, true, 2, 0, null, "", true, "Salir", null, 0, false, false, 3, 0, null, "", false ]
+script = ExtResource( 1 )
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+margin_left = 64.0
+margin_right = 68.0
+margin_bottom = 26.0
+
+[node name="MenuClasses" type="Button" parent="HBoxContainer"]
+margin_left = 72.0
+margin_right = 126.0
+margin_bottom = 26.0
+toggle_mode = true
+text = "Estilos"
+
+[connection signal="pressed" from="HBoxContainer/MenuClasses" to="." method="_on_MenuClasses_pressed"]

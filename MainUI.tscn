@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://ui/MenuBarUI.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ui/CharacterSheetUI.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/themes/theme1.tres" type="Theme" id=3]
+[ext_resource path="res://ui/ClassesUI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ui/MainUI.gd" type="Script" id=5]
+
+[node name="Main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 3 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuBar" parent="VBoxContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+margin_right = 1280.0
+margin_bottom = 40.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+margin_top = 44.0
+margin_right = 1280.0
+margin_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CharacterSheet" parent="VBoxContainer/ScrollContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1280.0
+margin_bottom = 676.0
+theme = null
+
+[node name="ClassesEditor" parent="." instance=ExtResource( 4 )]
+visible = false
+
+[connection signal="button_classes_pressed" from="VBoxContainer/MenuBar" to="." method="_on_MenuBar_button_classes_pressed"]
