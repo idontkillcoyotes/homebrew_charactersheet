@@ -66,16 +66,15 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Panel1" type="PanelContainer" parent="Tabs/Personaje/PanelTop/HBox"]
-margin_right = 500.0
+margin_right = 623.0
 margin_bottom = 114.0
-rect_min_size = Vector2( 500, 0 )
-size_flags_horizontal = 0
-size_flags_vertical = 5
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="Tabs/Personaje/PanelTop/HBox/Panel1"]
 margin_left = 5.0
 margin_top = 9.0
-margin_right = 495.0
+margin_right = 618.0
 margin_bottom = 105.0
 size_flags_horizontal = 7
 size_flags_vertical = 6
@@ -88,9 +87,13 @@ __meta__ = {
 }
 
 [node name="PersonalData" parent="Tabs/Personaje/PanelTop/HBox/Panel1/MarginContainer" instance=ExtResource( 5 )]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 608.0
+margin_bottom = 91.0
 
 [node name="Panel2" type="PanelContainer" parent="Tabs/Personaje/PanelTop/HBox"]
-margin_left = 504.0
+margin_left = 627.0
 margin_right = 1250.0
 margin_bottom = 114.0
 grow_horizontal = 0
@@ -101,40 +104,35 @@ size_flags_vertical = 3
 [node name="MarginContainer" type="MarginContainer" parent="Tabs/Personaje/PanelTop/HBox/Panel2"]
 margin_left = 5.0
 margin_top = 5.0
-margin_right = 741.0
+margin_right = 618.0
 margin_bottom = 109.0
 custom_constants/margin_top = 2
 custom_constants/margin_bottom = 2
 
 [node name="HBox" type="HBoxContainer" parent="Tabs/Personaje/PanelTop/HBox/Panel2/MarginContainer"]
 margin_top = 2.0
-margin_right = 736.0
+margin_right = 613.0
 margin_bottom = 102.0
 custom_constants/separation = 5
 
-[node name="Stat6" parent="Tabs/Personaje/PanelTop/HBox/Panel2/MarginContainer/HBox" instance=ExtResource( 3 )]
-margin_right = 143.0
-margin_bottom = 100.0
-
 [node name="Stat1" parent="Tabs/Personaje/PanelTop/HBox/Panel2/MarginContainer/HBox" instance=ExtResource( 3 )]
-margin_left = 148.0
-margin_right = 291.0
-margin_bottom = 100.0
+margin_right = 118.0
 
 [node name="Stat2" parent="Tabs/Personaje/PanelTop/HBox/Panel2/MarginContainer/HBox" instance=ExtResource( 3 )]
-margin_left = 296.0
-margin_right = 439.0
-margin_bottom = 100.0
+margin_left = 123.0
+margin_right = 242.0
 
 [node name="Stat3" parent="Tabs/Personaje/PanelTop/HBox/Panel2/MarginContainer/HBox" instance=ExtResource( 3 )]
-margin_left = 444.0
-margin_right = 587.0
-margin_bottom = 100.0
+margin_left = 247.0
+margin_right = 365.0
 
 [node name="Stat4" parent="Tabs/Personaje/PanelTop/HBox/Panel2/MarginContainer/HBox" instance=ExtResource( 3 )]
-margin_left = 592.0
-margin_right = 736.0
-margin_bottom = 100.0
+margin_left = 370.0
+margin_right = 489.0
+
+[node name="Stat6" parent="Tabs/Personaje/PanelTop/HBox/Panel2/MarginContainer/HBox" instance=ExtResource( 3 )]
+margin_left = 494.0
+margin_right = 613.0
 
 [node name="PanelBot" type="MarginContainer" parent="Tabs/Personaje"]
 margin_top = 138.0

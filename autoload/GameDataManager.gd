@@ -12,6 +12,32 @@ enum ATTRIBUTES {
 	CARISMA
 }
 
+const abilities : Dictionary = {
+	"agarrar_persona":ATTRIBUTES.FUERZA,
+	"analizar_muestra":ATTRIBUTES.INTELIGENCIA,
+	"atletismo":ATTRIBUTES.AGILIDAD,
+	"averiguar_intenciones":ATTRIBUTES.ASTUCIA,
+	"destruir":ATTRIBUTES.FUERZA,
+	"mover_grandes_objetos":ATTRIBUTES.FUERZA,
+	"trepar":ATTRIBUTES.FUERZA,
+	"tumbar":ATTRIBUTES.FUERZA,
+	"juego_de_manos":ATTRIBUTES.AGILIDAD,
+	"ocultarse":ATTRIBUTES.AGILIDAD,
+	"sigilo":ATTRIBUTES.AGILIDAD,
+	"historia":ATTRIBUTES.INTELIGENCIA,
+	"linguistica":ATTRIBUTES.INTELIGENCIA,
+	"medicina":ATTRIBUTES.INTELIGENCIA,
+	"naturaleza":ATTRIBUTES.INTELIGENCIA,
+	"ocultismo":ATTRIBUTES.INTELIGENCIA,
+	"investigacion":ATTRIBUTES.ASTUCIA,
+	"manualidades":ATTRIBUTES.ASTUCIA,
+	"percepcion":ATTRIBUTES.ASTUCIA,
+	"disfrazarse":ATTRIBUTES.CARISMA,
+	"interpretacion":ATTRIBUTES.CARISMA,
+	"intimidar":ATTRIBUTES.CARISMA,
+	"persuasion":ATTRIBUTES.CARISMA
+}
+
 var classes : Array = []
 
 func _ready():
@@ -22,6 +48,9 @@ func update_classes():
 	
 func get_classes()->Array:
 	return classes
+
+func get_abilities()->Dictionary:
+	return abilities
 
 func get_class_by_name(_name:String)->CharacterClassData:
 	var to_return = null
@@ -38,7 +67,7 @@ func get_attributes()->Dictionary:
 		"Astucia":3,
 		"Carisma":4,
 	}
-func get_attribute_name(id:int)->String:
+func get_attribute_by_id(id:int)->String:
 	match id:
 		ATTRIBUTES.FUERZA: return "Fuerza"
 		ATTRIBUTES.AGILIDAD: return "Agilidad"
@@ -70,5 +99,5 @@ func _load_classes():
 					classes.push_back(res)
 			file_name = dir.get_next()
 	else:
-		print("An error occurred when trying to access the classes folder.")
+		print("An error occurred when trying to access the game classes folder.")
 		return ERR_CANT_OPEN

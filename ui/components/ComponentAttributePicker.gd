@@ -15,7 +15,7 @@ func get_selected_attribute()->int:
 	return selected_id
 func set_selected_attribute(value:int):
 	selected_id = value
-	self.text = GameDataManager.get_attribute_name(selected_id)
+	self.text = GameDataManager.get_attribute_by_id(selected_id)
 
 func _on_AttributePicker_item_selected(index):
 	self.text = get_item_text(index)

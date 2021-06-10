@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://ui/components/ComponentAbilityCheckBox.gd" type="Script" id=1]
+
+[node name="AbilityCheckBox" type="CheckBox"]
+margin_right = 232.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+custom_constants/hseparation = 10
+text = "Nombre de habilidad (Atributo)"
+flat = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

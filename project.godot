@@ -17,17 +17,12 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "CharacterClassData",
 "language": "GDScript",
-"path": "res://resources/scripts/ClassData.gd"
+"path": "res://resources/scripts/CharacterClassData.gd"
 }, {
 "base": "Resource",
-"class": "CharacterSheetData",
+"class": "CharacterData",
 "language": "GDScript",
-"path": "res://resources/scripts/CharacterSheetData.gd"
-}, {
-"base": "Resource",
-"class": "Dice",
-"language": "GDScript",
-"path": "res://resources/scripts/Dice.gd"
+"path": "res://resources/scripts/CharacterData.gd"
 }, {
 "base": "Resource",
 "class": "Item",
@@ -52,8 +47,7 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "Attribute": "",
 "CharacterClassData": "",
-"CharacterSheetData": "",
-"Dice": "",
+"CharacterData": "",
 "Item": "",
 "ItemEquipable": "",
 "ItemWeapon": "",

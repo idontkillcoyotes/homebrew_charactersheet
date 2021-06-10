@@ -6,8 +6,8 @@
 [sub_resource type="StyleBoxEmpty" id=1]
 
 [node name="CharacterStat" type="PanelContainer"]
-margin_right = 70.0
-margin_bottom = 78.0
+margin_right = 100.0
+margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
 size_flags_horizontal = 7
 size_flags_vertical = 7

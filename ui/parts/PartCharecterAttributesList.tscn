@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://ui/parts/PartCharacterAttributesList.gd" type="Script" id=1]
-[ext_resource path="res://ui/parts/PartCharcterAttribute.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ui/parts/PartCharacterAttribute.tscn" type="PackedScene" id=3]
 
 [node name="AttributeList" type="VBoxContainer"]
 margin_left = 2.0

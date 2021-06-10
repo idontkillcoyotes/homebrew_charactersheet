@@ -5,10 +5,9 @@
 [ext_resource path="res://ui/components/ComponentNumberImput.tscn" type="PackedScene" id=3]
 
 [node name="CharData" type="VBoxContainer"]
-margin_left = 5.0
-margin_top = 5.0
-margin_right = 485.0
-margin_bottom = 91.0
+margin_right = 500.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 500, 0 )
 size_flags_horizontal = 7
 size_flags_vertical = 7
 custom_constants/separation = 20
@@ -18,7 +17,7 @@ __meta__ = {
 }
 
 [node name="HBox1" type="HBoxContainer" parent="."]
-margin_right = 480.0
+margin_right = 500.0
 margin_bottom = 24.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -32,28 +31,28 @@ text = "Nombre:"
 
 [node name="InputName" type="LineEdit" parent="HBox1"]
 margin_left = 60.0
-margin_right = 380.0
+margin_right = 400.0
 margin_bottom = 24.0
 size_flags_horizontal = 7
 max_length = 256
 
 [node name="LabelAge" type="Label" parent="HBox1"]
-margin_left = 384.0
+margin_left = 404.0
 margin_top = 5.0
-margin_right = 418.0
+margin_right = 438.0
 margin_bottom = 19.0
 text = "Edad:"
 
 [node name="InputAge" parent="HBox1" instance=ExtResource( 3 )]
-margin_left = 422.0
-margin_right = 480.0
+margin_left = 442.0
+margin_right = 500.0
 margin_bottom = 24.0
 max_length = 4
 max_value = 999
 
 [node name="HBox2" type="HBoxContainer" parent="."]
 margin_top = 44.0
-margin_right = 480.0
+margin_right = 500.0
 margin_bottom = 68.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -66,25 +65,26 @@ margin_bottom = 19.0
 text = "Estilo:"
 
 [node name="ClassSelector" parent="HBox2" instance=ExtResource( 2 )]
+margin_right = 251.0
 
 [node name="VSeparator" type="VSeparator" parent="HBox2"]
-margin_left = 277.0
-margin_right = 281.0
+margin_left = 255.0
+margin_right = 259.0
 margin_bottom = 24.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="LabelLevel" type="Label" parent="HBox2"]
-margin_left = 285.0
+margin_left = 263.0
 margin_top = 5.0
-margin_right = 322.0
+margin_right = 300.0
 margin_bottom = 19.0
 text = "Nivel:"
 
 [node name="InputLevel" parent="HBox2" instance=ExtResource( 3 )]
-margin_left = 326.0
-margin_right = 384.0
+margin_left = 304.0
+margin_right = 362.0
 margin_bottom = 24.0
 max_length = 4
 value = 1
@@ -92,17 +92,18 @@ min_value = 1
 max_value = 100
 
 [node name="LabelExp" type="Label" parent="HBox2"]
-margin_left = 388.0
+margin_left = 366.0
 margin_top = 5.0
-margin_right = 418.0
+margin_right = 396.0
 margin_bottom = 19.0
 text = "Exp.:"
 
 [node name="InputExp" parent="HBox2" instance=ExtResource( 3 )]
-margin_left = 422.0
-margin_right = 480.0
+margin_left = 400.0
+margin_right = 500.0
 margin_bottom = 24.0
-max_length = 7
+rect_min_size = Vector2( 100, 0 )
+max_length = 10
 
 [connection signal="focus_exited" from="HBox1/InputName" to="." method="_on_InputName_focus_exited"]
 [connection signal="text_entered" from="HBox1/InputName" to="." method="_on_InputName_text_entered"]

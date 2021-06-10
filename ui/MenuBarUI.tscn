@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://ui/MenuFile.gd" type="Script" id=1]
+[ext_resource path="res://ui/MenuCharacter.gd" type="Script" id=1]
 [ext_resource path="res://ui/MenuBarUI.gd" type="Script" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
 
 [node name="MenuBar" type="PanelContainer"]
 anchor_right = 1.0
@@ -18,23 +22,39 @@ margin_top = 7.0
 margin_right = 1273.0
 margin_bottom = 33.0
 
-[node name="MenuFile" type="MenuButton" parent="HBoxContainer"]
-margin_right = 60.0
+[node name="MenuCharacter" type="MenuButton" parent="HBoxContainer"]
+margin_right = 82.0
 margin_bottom = 26.0
-text = "Archivo"
-items = [ "Nuevo personaje", null, 0, false, false, 0, 0, null, "", false, "Cargar personaje", null, 0, false, false, 1, 0, null, "", false, "", null, 0, false, true, 2, 0, null, "", true, "Salir", null, 0, false, false, 3, 0, null, "", false ]
+text = "Personajes"
 script = ExtResource( 1 )
 
-[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
-margin_left = 64.0
-margin_right = 68.0
+[node name="VSeparator1" type="VSeparator" parent="HBoxContainer"]
+margin_left = 86.0
+margin_right = 90.0
 margin_bottom = 26.0
+custom_styles/separator = SubResource( 1 )
 
 [node name="MenuClasses" type="Button" parent="HBoxContainer"]
-margin_left = 72.0
-margin_right = 126.0
+margin_left = 94.0
+margin_right = 194.0
 margin_bottom = 26.0
+rect_min_size = Vector2( 100, 0 )
 toggle_mode = true
 text = "Estilos"
 
+[node name="VSeparator2" type="VSeparator" parent="HBoxContainer"]
+margin_left = 198.0
+margin_right = 1162.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+custom_styles/separator = SubResource( 2 )
+
+[node name="ButtonExit" type="Button" parent="HBoxContainer"]
+margin_left = 1166.0
+margin_right = 1266.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 100, 0 )
+text = "Salir"
+
 [connection signal="pressed" from="HBoxContainer/MenuClasses" to="." method="_on_MenuClasses_pressed"]
+[connection signal="pressed" from="HBoxContainer/ButtonExit" to="." method="_on_ButtonExit_pressed"]

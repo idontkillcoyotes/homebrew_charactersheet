@@ -48,6 +48,10 @@ margin_bottom = 676.0
 theme = null
 
 [node name="ClassesEditor" parent="." instance=ExtResource( 4 )]
+
+[node name="Explorer" parent="ClassesEditor" index="0"]
 visible = false
 
-[connection signal="button_classes_pressed" from="VBoxContainer/MenuBar" to="." method="_on_MenuBar_button_classes_pressed"]
+[connection signal="button_classes_pressed" from="VBoxContainer/MenuBar" to="ClassesEditor/Explorer" method="_on_MenuBar_button_classes_pressed"]
+
+[editable path="ClassesEditor"]

@@ -1,5 +1,7 @@
 extends OptionButton
 
+signal class_selected
+
 var selected_class_name : String = ""
 
 func _ready():
@@ -9,7 +11,8 @@ func _ready():
 func _load_data():
 	var chardata = CharacterDataManager.get_current_character()
 	
-	selected_class_name = chardata.classdata.name
+	if chardata.classdata != null:
+		selected_class_name = chardata.classdata.name
 	
 	var id = 0
 	for i in get_item_count():
@@ -33,6 +36,13 @@ func _update_data():
 	
 	CharacterDataManager.save_character()
 
-func _on_ClassSelector_item_selected(_index):
+func _select_class():
 	selected_class_name = get_item_text(get_selected_id())
-	_update_data()
+	_update_data()	
+	emit_signal("class_selected")
+
+func _on_ClassSelector_item_selected(_index):
+	_select_class()
+
+func _on_ClassSelector_focus_exited():
+	_select_class()

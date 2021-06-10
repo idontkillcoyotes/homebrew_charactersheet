@@ -73,5 +73,4 @@ align = 1
 valign = 1
 
 [connection signal="editing_stopped" from="MarginContainer/VBoxContainer/Input" to="." method="_on_Input_editing_stopped"]
-[connection signal="text_entered" from="MarginContainer/VBoxContainer/Input" to="MarginContainer" method="_on_NumberImput_text_entered"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/Input" to="." method="_on_Input_value_changed"]

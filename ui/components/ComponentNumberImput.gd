@@ -34,6 +34,7 @@ func _on_NumberImput_text_entered(new_text):
 		set_value(int(new_text))
 	else:
 		self.text=str(value)
+	emit_signal("editing_stopped")
 
 func _on_NumberImput_focus_exited():
 	emit_signal("editing_stopped")

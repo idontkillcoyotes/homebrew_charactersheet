@@ -43,3 +43,9 @@ func _on_ClassEditor_class_saved():
 func _on_ClassEditor_editor_closed():
 	_set_disable_buttons(true)
 	btn_new.disabled=false
+
+func _on_ButtonClose_pressed():
+	self.hide()
+
+func _on_MenuBar_button_classes_pressed():
+	self.show()
