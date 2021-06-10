@@ -1,7 +1,5 @@
 extends OptionButton
 
-signal class_selected
-
 var selected_class_name : String = ""
 
 func _ready():
@@ -32,14 +30,13 @@ func _update_data():
 	var selected_class = GameDataManager.get_class_by_name(selected_class_name)
 	var chardata = CharacterDataManager.get_current_character()
 	
-	chardata.classdata = selected_class
+	chardata.set_class_data(selected_class)
 	
 	CharacterDataManager.save_character()
 
 func _select_class():
 	selected_class_name = get_item_text(get_selected_id())
-	_update_data()	
-	emit_signal("class_selected")
+	_update_data()
 
 func _on_ClassSelector_item_selected(_index):
 	_select_class()

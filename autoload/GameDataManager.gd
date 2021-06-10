@@ -38,19 +38,42 @@ const abilities : Dictionary = {
 	"Tumbar":ATTRIBUTES.FUERZA
 }
 
+const stats : Dictionary = {
+	"proficiency":"Proficiencia",
+	"physical_resistance":"Res. Fisica",
+	"magical_resistance":"Res. Magica",
+	"reflexes":"Reflejos",
+	"fortaleza":"Fortaleza"
+}
+
 var classes : Array = []
+
+func _notification(what):
+	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
+		print("Usuario cerro la aplicacion. Guardando")
+		CharacterDataManager.save_character()
 
 func _ready():
 	_load_classes()
 
 func update_classes():
 	_load_classes()
-	
+
+func get_stats()->Dictionary:
+	return stats
+
 func get_classes()->Array:
 	return classes
 
 func get_abilities()->Dictionary:
 	return abilities
+
+func get_ability_attribute(ability_name:String)->String:
+	if abilities.has(ability_name):
+		var id = abilities[ability_name]
+		return get_attribute_by_id(id)
+	else:
+		return "Fuerza"
 
 func get_class_by_name(_name:String)->CharacterClassData:
 	var to_return = null

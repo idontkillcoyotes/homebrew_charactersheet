@@ -12,9 +12,9 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -325.0
 margin_top = -191.0
-margin_right = 325.0
-margin_bottom = 191.0
-rect_min_size = Vector2( 580, 350 )
+margin_right = 329.0
+margin_bottom = 169.0
+rect_min_size = Vector2( 580, 360 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -24,37 +24,34 @@ __meta__ = {
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 647.0
-margin_bottom = 375.0
+margin_bottom = 353.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer"]
 margin_right = 640.0
-margin_bottom = 24.0
-custom_constants/margin_right = 5
-custom_constants/margin_top = 5
+margin_bottom = 14.0
+custom_constants/margin_right = 0
+custom_constants/margin_top = 0
 custom_constants/margin_left = 5
-custom_constants/margin_bottom = 5
 
 [node name="Label" type="Label" parent="VBoxContainer/MarginContainer3"]
 margin_left = 5.0
-margin_top = 5.0
-margin_right = 635.0
-margin_bottom = 19.0
-text = "Editor de clase:"
-align = 1
+margin_right = 640.0
+margin_bottom = 14.0
+text = "Editor de estilo"
 valign = 1
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
-margin_top = 28.0
+margin_top = 18.0
 margin_right = 640.0
-margin_bottom = 39.0
+margin_bottom = 23.0
 size_flags_vertical = 7
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
-margin_top = 43.0
+margin_top = 27.0
 margin_right = 640.0
-margin_bottom = 319.0
+margin_bottom = 303.0
 rect_min_size = Vector2( 500, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -276,15 +273,15 @@ size_flags_horizontal = 6
 text = "Seleccionar proficiencias en habilidades"
 
 [node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
-margin_top = 323.0
+margin_top = 307.0
 margin_right = 640.0
-margin_bottom = 334.0
+margin_bottom = 312.0
 size_flags_vertical = 7
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
-margin_top = 338.0
+margin_top = 316.0
 margin_right = 640.0
-margin_bottom = 368.0
+margin_bottom = 346.0
 size_flags_vertical = 10
 custom_constants/margin_right = 5
 custom_constants/margin_top = 5

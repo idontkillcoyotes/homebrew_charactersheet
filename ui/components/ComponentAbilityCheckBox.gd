@@ -14,8 +14,7 @@ func get_ability_name()->String:
 
 func _get_ability_text()->String:
 	var text = ability_name
-	var abilities = GameDataManager.get_abilities()
-	var atr = GameDataManager.get_attribute_by_id(abilities[ability_name])
+	var atr = GameDataManager.get_ability_attribute(ability_name)
 	text += " ("+atr+")"
 	return text
 

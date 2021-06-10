@@ -51,3 +51,4 @@ func get_ability_prof(ability:String)->bool:
 func set_ability_prof(ability:String,value:bool):
 	if abilities_prof.has(ability):
 		abilities_prof[ability] = value
+		emit_changed()

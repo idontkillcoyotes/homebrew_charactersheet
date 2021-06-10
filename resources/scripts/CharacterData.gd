@@ -33,38 +33,97 @@ export var extra_fortaleza_bonus : int = 0
 
 # Abilities level points
 export var ability_points = {
-	"fuerza":{
-		"agarrar_persona":0,
-		"destruir":0,
-		"mover_grandes_objetos":0,
-		"trepar":0,
-		"tumbar":0
+	"Agarrar persona":{
+		"level":0,
+		"extra":0
 	},
-	"agilidad":{
-		"atletismo":0,
-		"juego_de_manos":0,
-		"ocultarse":0,
-		"sigilo":0
+	"Analizar muestra":{
+		"level":0,
+		"extra":0
 	},
-	"inteligencia":{
-		"analizar_muestra":0,
-		"historia":0,
-		"linguistica":0,
-		"medicina":0,
-		"naturaleza":0,
-		"ocultismo":0
+	"Atletismo":{
+		"level":0,
+		"extra":0
 	},
-	"astucia":{
-		"averiguar_intencion":0,
-		"investigacion":0,
-		"manualidades":0,
-		"percepcion":0
+	"Averiguar intenciones":{
+		"level":0,
+		"extra":0
 	},
-	"carisma":{
-		"disfrazarse":0,
-		"interpretacion":0,
-		"intimidar":0,
-		"persuasion":0
+	"Destruir":{
+		"level":0,
+		"extra":0
+	},
+	"Disfrazarse":{
+		"level":0,
+		"extra":0
+	},
+	"Historia":{
+		"level":0,
+		"extra":0
+	},
+	"Interpretacion":{
+		"level":0,
+		"extra":0
+	},
+	"Investigacion":{
+		"level":0,
+		"extra":0
+	},
+	"Intimidar":{
+		"level":0,
+		"extra":0
+	},
+	"Juego de manos":{
+		"level":0,
+		"extra":0
+	},
+	"Linguistica":{
+		"level":0,
+		"extra":0
+	},
+	"Manualidades":{
+		"level":0,
+		"extra":0
+	},
+	"Medicina":{
+		"level":0,
+		"extra":0
+	},
+	"Mover grandes objetos":{
+		"level":0,
+		"extra":0
+	},
+	"Naturaleza":{
+		"level":0,
+		"extra":0
+	},
+	"Ocultarse":{
+		"level":0,
+		"extra":0
+	},
+	"Ocultismo":{
+		"level":0,
+		"extra":0
+	},
+	"Percepcion":{
+		"level":0,
+		"extra":0
+	},
+	"Persuasion":{
+		"level":0,
+		"extra":0
+	},
+	"Sigilo":{
+		"level":0,
+		"extra":0
+	},
+	"Trepar":{
+		"level":0,
+		"extra":0
+	},
+	"Tumbar":{
+		"level":0,
+		"extra":0
 	}
 }
 
@@ -77,25 +136,58 @@ export var inventory : Array = []
 
 func add_item(item:Item):
 	inventory.push_back(item)
+	emit_changed()
+
+func set_class_data(data:CharacterClassData):
+	classdata = data
+	classdata.connect("changed",self,"_on_class_changed")
+	emit_changed()
 
 func set_attribute(attribute:String,value:int):
 	var name = attribute.to_lower()
 	if value>=0 and attributes.has(name):
 		attributes[name] = value
+		emit_changed()
 
 func get_attribute(attribute:String)->int:
 	var name = attribute.to_lower()
 	if attributes.has(name):
 		return attributes[name]
 	else:
-		return -1
+		return 0
 
-func set_ability_level(attribute:String,ability:String,value:int=0):
-	var attr = attribute.to_lower()
-	var name = ability.to_lower()
-	if ability_points.has(attr):
-		if ability_points[attr].has(name):
-			ability_points[attr][name] = value
+func get_attribute_mod(attribute:String)->int:
+	var name = attribute.to_lower()
+	if attributes.has(name):
+		return int((attributes[name]-10)/2)
+	else:
+		return 0
+
+func set_ability_level(ability:String,value:int=0):
+	if ability_points.has(ability):
+		ability_points[ability]["level"] = value
+		emit_changed()
+func set_ability_extra(ability:String,value:int=0):
+	if ability_points.has(ability):
+		ability_points[ability]["extra"] = value
+		emit_changed()
+
+func get_ability_level(ability:String)->int:
+	if ability_points.has(ability):
+		return ability_points[ability]["level"]
+	else:
+		return 0
+func get_ability_extra(ability:String)->int:
+	if ability_points.has(ability):
+		return ability_points[ability]["extra"]
+	else:
+		return 0
+
+func is_proficient(ability_name:String)->bool:
+	if classdata:
+		return classdata.get_ability_prof(ability_name)
+	else:
+		return false
 
 func get_property(name:String):
 	name = name.to_lower()
@@ -124,6 +216,14 @@ func get_property(name:String):
 			return _get_reflexes()
 		"fortaleza":
 			return _get_fortaleza()
+		"extra_physical_resistance":
+			return extra_physical_resistance
+		"extra_magical_resistance":
+			return extra_magical_resistance
+		"extra_reflexes":
+			return extra_reflexes_bonus
+		"extra_fortaleza":
+			return extra_fortaleza_bonus
 		_:
 			return null
 
@@ -132,38 +232,56 @@ func set_property(name:String,value):
 	match name:
 		"name":
 			character_name = value
+			emit_changed()
 			return OK
 		"age":
 			character_age = value
+			emit_changed()
 			return OK
 		"level":
 			character_level = value
+			emit_changed()
 			return OK
 		"exp":
 			character_exp = value
+			emit_changed()
 			return OK
 		"class":
 			classdata = value
+			emit_changed()
 			return OK
 		"current_hp":
 			current_hp = value
+			emit_changed()
 			return OK
 		"max_hp":
 			max_hp = value
+			emit_changed()
+			return OK
+		"extra_physical_resistance":
+			extra_physical_resistance = value
+			emit_changed()
+			return OK
+		"extra_magical_resistance":
+			extra_magical_resistance = value
+			emit_changed()
+			return OK
+		"extra_reflexes":
+			extra_reflexes_bonus = value
+			emit_changed()
+			return OK
+		"extra_fortaleza":
+			extra_fortaleza_bonus = value
+			emit_changed()
 			return OK
 		_:
 			return ERR_DOES_NOT_EXIST
 
+
+
 ###############################################
 # PRIVATE METHODS
 ###############################################
-
-func _get_attribute_mod(attribute:String)->int:
-	var name = attribute.to_lower()
-	if attributes.has(name):
-		return int((attributes[name]-10)/2)
-	else:
-		return 0
 
 func _get_proficiency_bonus():
 	if character_level <= 4:
@@ -174,20 +292,22 @@ func _get_proficiency_bonus():
 
 func _get_physical_resistance()->int:
 	var value = classdata.base_physical_resistance
+	value += get_attribute_mod("agilidad")
 	value += _get_equipped_PF_bonus()
-	value += _get_attribute_mod("agilidad")
+	value += _get_proficiency_bonus()
 	value += extra_physical_resistance
 	return value
 
 func _get_magical_resistance()->int:
 	var value = classdata.base_magical_resistance
 	value += _get_equipped_MF_bonus()
+	value += _get_proficiency_bonus()
 	value += extra_magical_resistance
 	return value
 
 func _get_reflexes()->int:
 	var value = base_reflexes
-	value += _get_attribute_mod("agilidad")
+	value += get_attribute_mod("agilidad")
 	value += _get_proficiency_bonus()
 	value += _get_equipped_REF_bonus()
 	value += extra_reflexes_bonus
@@ -195,35 +315,14 @@ func _get_reflexes()->int:
 
 func _get_fortaleza()->int:
 	var value = base_fortaleza
-	value += _get_attribute_mod("fuerza")
+	value += get_attribute_mod("fuerza")
 	value += _get_proficiency_bonus()
 	value += _get_equipped_FOR_bonus()
 	value += extra_fortaleza_bonus
 	return value
 
-func _get_ability_mod(attribute:String,ability:String)->int:
-	var attr = attribute.to_lower()
-	var name = ability.to_lower()
-	
-	# chequeo que habilidad sea valida (este bien escrita)
-	if not ability_points.has[attr]:
-		return 0
-	if not ability_points[attr].has[name]:
-		return 0
-	
-	# la habilidad es valida
-	var mod : int = ability_points[attr][name]
-	
-	# obtengo habilidades natas de clase
-	var is_prof : bool = classdata.get_ability_prof(attr,name)
-	
-	if is_prof:
-		mod += 3
-	
-	mod += _get_attribute_mod(attr)
-	mod += _get_ability_bonus(attr,name)
-
-	return mod
+func _on_class_changed():
+	emit_changed()
 
 # Calculated based on inventory and/or feats
 func _get_equipped_PF_bonus()->int:

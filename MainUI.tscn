@@ -8,7 +8,14 @@
 [node name="Main" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1280.0
+margin_bottom = 720.0
+color = Color( 0.270588, 0.231373, 0.184314, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -16,35 +23,63 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MenuBar" parent="VBoxContainer" instance=ExtResource( 1 )]
-anchor_right = 0.0
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
 margin_right = 1280.0
-margin_bottom = 40.0
+margin_bottom = 42.0
+size_flags_horizontal = 7
+custom_constants/margin_right = 5
+custom_constants/margin_top = 2
+custom_constants/margin_left = 5
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
-margin_top = 44.0
+[node name="MenuBar" parent="VBoxContainer/MarginContainer2" instance=ExtResource( 1 )]
+anchor_right = 0.0
+margin_left = 5.0
+margin_top = 2.0
+margin_right = 1275.0
+margin_bottom = 42.0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+margin_top = 46.0
 margin_right = 1280.0
 margin_bottom = 720.0
+size_flags_horizontal = 7
+size_flags_vertical = 3
+custom_constants/margin_right = 5
+custom_constants/margin_left = 5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer"]
+margin_left = 5.0
+margin_right = 1275.0
+margin_bottom = 674.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_horizontal = 7
+size_flags_vertical = 7
 scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CharacterSheet" parent="VBoxContainer/ScrollContainer" instance=ExtResource( 2 )]
+[node name="CharacterSheet" parent="VBoxContainer/MarginContainer/ScrollContainer" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 1280.0
-margin_bottom = 676.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 1257.0
+margin_bottom = 718.0
 theme = null
 
 [node name="ClassesUI" parent="." instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 0.0
+margin_right = 1280.0
+margin_bottom = 720.0
 
-[connection signal="button_classes_pressed" from="VBoxContainer/MenuBar" to="ClassesUI" method="_on_MenuBar_button_classes_pressed"]
+[connection signal="button_classes_pressed" from="VBoxContainer/MarginContainer2/MenuBar" to="ClassesUI" method="_on_MenuBar_button_classes_pressed"]

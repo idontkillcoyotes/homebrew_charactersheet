@@ -39,7 +39,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ButtonName" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="ButtonName" type="ToolButton" parent="MarginContainer/VBoxContainer"]
 margin_right = 77.0
 margin_bottom = 22.0
 rect_min_size = Vector2( 75, 0 )
@@ -47,9 +47,6 @@ size_flags_horizontal = 7
 size_flags_vertical = 7
 custom_styles/normal = SubResource( 1 )
 text = "atributo"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Input" parent="MarginContainer/VBoxContainer" instance=ExtResource( 3 )]
 margin_left = 9.0
