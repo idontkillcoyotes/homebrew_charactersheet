@@ -18,3 +18,8 @@ func _get_ability_text()->String:
 	var atr = GameDataManager.get_attribute_by_id(abilities[ability_name])
 	text += " ("+atr+")"
 	return text
+
+func is_selected()->bool:
+	return self.pressed
+func set_selected(value:bool):
+	set_pressed(value)

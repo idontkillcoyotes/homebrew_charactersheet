@@ -1,16 +1,14 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://ui/MenuBarUI.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ui/CharacterSheetUI.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/themes/theme1.tres" type="Theme" id=3]
 [ext_resource path="res://ui/ClassesUI.tscn" type="PackedScene" id=4]
-[ext_resource path="res://ui/MainUI.gd" type="Script" id=5]
 
 [node name="Main" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 3 )
-script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -47,11 +45,6 @@ margin_right = 1280.0
 margin_bottom = 676.0
 theme = null
 
-[node name="ClassesEditor" parent="." instance=ExtResource( 4 )]
+[node name="ClassesUI" parent="." instance=ExtResource( 4 )]
 
-[node name="Explorer" parent="ClassesEditor" index="0"]
-visible = false
-
-[connection signal="button_classes_pressed" from="VBoxContainer/MenuBar" to="ClassesEditor/Explorer" method="_on_MenuBar_button_classes_pressed"]
-
-[editable path="ClassesEditor"]
+[connection signal="button_classes_pressed" from="VBoxContainer/MenuBar" to="ClassesUI" method="_on_MenuBar_button_classes_pressed"]

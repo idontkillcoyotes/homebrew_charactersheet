@@ -13,7 +13,7 @@ func reload():
 
 func _populate():
 	selected_class = null
-	self.clear()
+	clear()
 	
 	GameDataManager.update_classes()
 	var classes = GameDataManager.get_classes()

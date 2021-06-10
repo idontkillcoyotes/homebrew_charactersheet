@@ -2,16 +2,22 @@ extends PanelContainer
 
 signal new_class
 signal edit_class(classdata)
+signal explorer_closed
 
 onready var btn_new = $VBoxContainer/Buttons/Box/ButtonNew
 onready var btn_edit = $VBoxContainer/Buttons/Box/ButtonEdit
 onready var btn_delete =$VBoxContainer/Buttons/Box/ButtonDelete
 onready var class_list = $VBoxContainer/MarginContainer2/ClassesList
 
+func open():
+	self.show()
+	class_list.reload()
+
 func _ready():
 	btn_edit.disabled=true
 	btn_delete.disabled=true
 	btn_new.disabled=false
+	self.hide()
 
 func _set_disable_buttons(value:bool):
 	btn_delete.disabled=value
@@ -37,15 +43,13 @@ func _on_ClassesList_class_deselected():
 func _on_ClassesList_class_selected(_class_data):
 	_set_disable_buttons(false)
 
-func _on_ClassEditor_class_saved():
+func _on_Editor_class_saved():
 	class_list.reload()
 
-func _on_ClassEditor_editor_closed():
+func _on_Editor_editor_closed():
 	_set_disable_buttons(true)
 	btn_new.disabled=false
 
 func _on_ButtonClose_pressed():
 	self.hide()
-
-func _on_MenuBar_button_classes_pressed():
-	self.show()
+	emit_signal("explorer_closed")

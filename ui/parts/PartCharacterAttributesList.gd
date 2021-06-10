@@ -12,7 +12,6 @@ func _ready():
 func _load_data():
 	var chardata = CharacterDataManager.get_current_character()
 	var char_attr = chardata.attributes
-	print(char_attr)
 	atr1.set_display_name("Fuerza")
 	atr1.set_character_stat_name("fuerza")
 	atr1.load_data()

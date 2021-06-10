@@ -13,29 +13,29 @@ enum ATTRIBUTES {
 }
 
 const abilities : Dictionary = {
-	"agarrar_persona":ATTRIBUTES.FUERZA,
-	"analizar_muestra":ATTRIBUTES.INTELIGENCIA,
-	"atletismo":ATTRIBUTES.AGILIDAD,
-	"averiguar_intenciones":ATTRIBUTES.ASTUCIA,
-	"destruir":ATTRIBUTES.FUERZA,
-	"mover_grandes_objetos":ATTRIBUTES.FUERZA,
-	"trepar":ATTRIBUTES.FUERZA,
-	"tumbar":ATTRIBUTES.FUERZA,
-	"juego_de_manos":ATTRIBUTES.AGILIDAD,
-	"ocultarse":ATTRIBUTES.AGILIDAD,
-	"sigilo":ATTRIBUTES.AGILIDAD,
-	"historia":ATTRIBUTES.INTELIGENCIA,
-	"linguistica":ATTRIBUTES.INTELIGENCIA,
-	"medicina":ATTRIBUTES.INTELIGENCIA,
-	"naturaleza":ATTRIBUTES.INTELIGENCIA,
-	"ocultismo":ATTRIBUTES.INTELIGENCIA,
-	"investigacion":ATTRIBUTES.ASTUCIA,
-	"manualidades":ATTRIBUTES.ASTUCIA,
-	"percepcion":ATTRIBUTES.ASTUCIA,
-	"disfrazarse":ATTRIBUTES.CARISMA,
-	"interpretacion":ATTRIBUTES.CARISMA,
-	"intimidar":ATTRIBUTES.CARISMA,
-	"persuasion":ATTRIBUTES.CARISMA
+	"Agarrar persona":ATTRIBUTES.FUERZA,
+	"Analizar muestra":ATTRIBUTES.INTELIGENCIA,
+	"Atletismo":ATTRIBUTES.AGILIDAD,
+	"Averiguar intenciones":ATTRIBUTES.ASTUCIA,
+	"Destruir":ATTRIBUTES.FUERZA,
+	"Disfrazarse":ATTRIBUTES.CARISMA,
+	"Historia":ATTRIBUTES.INTELIGENCIA,
+	"Interpretacion":ATTRIBUTES.CARISMA,
+	"Investigacion":ATTRIBUTES.ASTUCIA,
+	"Intimidar":ATTRIBUTES.CARISMA,
+	"Juego de manos":ATTRIBUTES.AGILIDAD,
+	"Linguistica":ATTRIBUTES.INTELIGENCIA,
+	"Manualidades":ATTRIBUTES.ASTUCIA,
+	"Medicina":ATTRIBUTES.INTELIGENCIA,
+	"Mover grandes objetos":ATTRIBUTES.FUERZA,
+	"Naturaleza":ATTRIBUTES.INTELIGENCIA,
+	"Ocultarse":ATTRIBUTES.AGILIDAD,
+	"Ocultismo":ATTRIBUTES.INTELIGENCIA,
+	"Percepcion":ATTRIBUTES.ASTUCIA,
+	"Persuasion":ATTRIBUTES.CARISMA,
+	"Sigilo":ATTRIBUTES.AGILIDAD,
+	"Trepar":ATTRIBUTES.FUERZA,
+	"Tumbar":ATTRIBUTES.FUERZA
 }
 
 var classes : Array = []
@@ -100,4 +100,5 @@ func _load_classes():
 			file_name = dir.get_next()
 	else:
 		print("An error occurred when trying to access the game classes folder.")
+		_create_directories()
 		return ERR_CANT_OPEN

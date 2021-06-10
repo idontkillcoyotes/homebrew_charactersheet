@@ -2,6 +2,7 @@ extends PanelContainer
 
 signal editor_closed
 signal class_saved
+signal button_abilities_pressed(class_data)
 
 var classdata : CharacterClassData = null
 
@@ -14,13 +15,22 @@ onready var in_PR = $VBoxContainer/MarginContainer/VBoxContainer/Box6/InputPRes
 onready var in_MR = $VBoxContainer/MarginContainer/VBoxContainer/Box6/InputMRes
 onready var in_dice = $VBoxContainer/MarginContainer/VBoxContainer/Box4/InputDice
 
-func _ready():
-	self.hide()
 
-func load_class(data:CharacterClassData):
+func _load_class(data:CharacterClassData):
 	self.classdata = data
 	_load_data()
+	in_name.editable = false
 	self.show()
+
+func _new_class():
+	classdata = CharacterClassData.new()
+	_load_data()
+	in_name.editable = true
+	in_attribute.set_selected_attribute(0)
+	self.show()
+
+func _ready():
+	self.hide()
 
 func _load_data():
 	in_name.text = classdata.name
@@ -32,12 +42,7 @@ func _load_data():
 	in_MR.set_value(classdata.base_magical_resistance)
 	in_dice.set_value(classdata.hit_dice_sides)
 
-func new_class():
-	classdata = CharacterClassData.new()
-	_load_data()
-	self.show()
-
-func save_class():
+func _update_class():
 	classdata.name = in_name.get_text()
 	classdata.description = in_desc.get_text()
 	classdata.main_attribute = in_attribute.get_selected_attribute()
@@ -46,14 +51,15 @@ func save_class():
 	classdata.base_physical_resistance = int(in_PR.get_value())
 	classdata.base_magical_resistance = int(in_MR.get_value())
 	classdata.hit_dice_sides = int(in_dice.get_value())
-	
-	#abilities
-	var path = GameDataManager.classes_path+"/"+classdata.name+".res"
+
+func _save_class():
+	var path = GameDataManager.classes_path+"/"+classdata.name+".tres"
 	if ResourceSaver.save(path,classdata) != OK:
 		print("There was an error trying to save the class")
 
 func _on_ButtonSave_pressed():
-	save_class()
+	_update_class()
+	_save_class()
 	emit_signal("class_saved")
 	self.hide()
 	emit_signal("editor_closed")
@@ -62,12 +68,14 @@ func _on_ButtonCancel_pressed():
 	self.hide()
 	emit_signal("editor_closed")
 
-func _on_ClassExplorer_new_class():
-	new_class()
-	in_name.editable = true
-	self.show()
+func _on_ButtonAbilities_pressed():
+	emit_signal("button_abilities_pressed",classdata)
 
-func _on_ClassExplorer_edit_class(classdata):
-	load_class(classdata)
-	in_name.editable = false
-	self.show()
+func _on_Explorer_edit_class(classdata):
+	_load_class(classdata)
+func _on_Explorer_new_class():
+	_new_class()
+
+func _on_AbilitiesSelector_ability_selected(ability_name, value):
+	#_update_ability_prof(ability_name,value)
+	pass

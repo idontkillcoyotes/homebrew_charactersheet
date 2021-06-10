@@ -5,11 +5,7 @@ const OPTIONS = {
 	1:"Cargar Personaje",
 	2:"Guardar Personaje"
 }
-
-
 var popup: PopupMenu
-
-
 
 func _ready():
 	popup = get_popup()
