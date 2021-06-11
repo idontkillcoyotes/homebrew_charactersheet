@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://ui/components/ComponentAttributeSelector.gd" type="Script" id=1]
+
+[node name="AttributeSelector" type="ItemList"]
+margin_left = 165.0
+margin_top = 18.0
+margin_right = 465.0
+margin_bottom = 117.0
+rect_min_size = Vector2( 300, 0 )
+size_flags_horizontal = 4
+items = [ "Fuerza", null, false, "Agilidad", null, false, "Inteligencia", null, false, "Astucia", null, false, "Carisma", null, false ]
+select_mode = 1
+auto_height = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
