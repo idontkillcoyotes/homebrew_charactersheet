@@ -26,8 +26,7 @@ func load_character(file_name:String):
 	current_character = data
 	current_character_file_name = file_name
 	current_character_path = path
-	
-	
+		
 	current_character.connect("changed",self,"_on_characterdata_changed")
 	emit_signal("data_loaded")
 

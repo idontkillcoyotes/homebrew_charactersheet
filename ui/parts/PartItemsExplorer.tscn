@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://ui/components/ComponentClassesList.tscn" type="PackedScene" id=1]
-[ext_resource path="res://ui/parts/PartClassExplorer.gd" type="Script" id=2]
+[ext_resource path="res://ui/components/ComponentItemsList.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ui/parts/PartItemsExplorer.gd" type="Script" id=2]
 
 [node name="ItemsExplorer" type="PanelContainer"]
 anchor_left = 0.5
@@ -21,92 +21,115 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 375.0
+margin_right = 371.0
 margin_bottom = 375.0
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
-margin_right = 368.0
+[node name="Titulo" type="MarginContainer" parent="VBoxContainer"]
+margin_right = 364.0
 margin_bottom = 20.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
-margin_right = 368.0
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Titulo"]
+margin_right = 364.0
 margin_bottom = 20.0
 
-[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/Titulo/HBoxContainer"]
 margin_top = 3.0
-margin_right = 324.0
+margin_right = 320.0
 margin_bottom = 17.0
 size_flags_horizontal = 3
-text = "Estilos"
+text = "Explorador de items"
 valign = 1
 
-[node name="ButtonClose" type="Button" parent="VBoxContainer/MarginContainer/HBoxContainer"]
-margin_left = 328.0
-margin_right = 368.0
+[node name="ButtonClose" type="Button" parent="VBoxContainer/Titulo/HBoxContainer"]
+margin_left = 324.0
+margin_right = 364.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 40, 0 )
 text = "x"
 
-[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+[node name="Separator1" type="HSeparator" parent="VBoxContainer"]
 margin_top = 24.0
-margin_right = 368.0
+margin_right = 364.0
 margin_bottom = 28.0
 
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+[node name="Contents" type="MarginContainer" parent="VBoxContainer"]
 margin_top = 32.0
-margin_right = 368.0
-margin_bottom = 336.0
+margin_right = 364.0
+margin_bottom = 304.0
 size_flags_vertical = 7
 
-[node name="ClassesList" parent="VBoxContainer/MarginContainer2" instance=ExtResource( 1 )]
-margin_right = 368.0
-margin_bottom = 304.0
+[node name="ItemsList" parent="VBoxContainer/Contents" instance=ExtResource( 1 )]
+margin_right = 364.0
+margin_bottom = 272.0
 
-[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
-margin_top = 340.0
-margin_right = 368.0
-margin_bottom = 344.0
+[node name="Separator2" type="HSeparator" parent="VBoxContainer"]
+margin_top = 308.0
+margin_right = 364.0
+margin_bottom = 312.0
 
 [node name="Buttons" type="MarginContainer" parent="VBoxContainer"]
-margin_top = 348.0
-margin_right = 368.0
+margin_top = 316.0
+margin_right = 364.0
 margin_bottom = 368.0
 
-[node name="Box" type="HBoxContainer" parent="VBoxContainer/Buttons"]
-margin_right = 368.0
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Buttons"]
+margin_right = 364.0
+margin_bottom = 52.0
+
+[node name="Box1" type="HBoxContainer" parent="VBoxContainer/Buttons/VBoxContainer"]
+margin_right = 364.0
 margin_bottom = 20.0
 
-[node name="ButtonDelete" type="Button" parent="VBoxContainer/Buttons/Box"]
-margin_right = 120.0
+[node name="ButtonDelete" type="Button" parent="VBoxContainer/Buttons/VBoxContainer/Box1"]
+margin_right = 180.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 120, 0 )
-size_flags_horizontal = 6
+size_flags_horizontal = 7
 size_flags_vertical = 5
 disabled = true
 text = "Eliminar"
 
-[node name="ButtonEdit" type="Button" parent="VBoxContainer/Buttons/Box"]
-margin_left = 124.0
-margin_right = 244.0
+[node name="ButtonEdit" type="Button" parent="VBoxContainer/Buttons/VBoxContainer/Box1"]
+margin_left = 184.0
+margin_right = 364.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 120, 0 )
-size_flags_horizontal = 6
+size_flags_horizontal = 7
 size_flags_vertical = 5
 disabled = true
 text = "Editar"
 
-[node name="ButtonNew" type="Button" parent="VBoxContainer/Buttons/Box"]
-margin_left = 248.0
-margin_right = 368.0
+[node name="Separator" type="HSeparator" parent="VBoxContainer/Buttons/VBoxContainer"]
+margin_top = 24.0
+margin_right = 364.0
+margin_bottom = 28.0
+
+[node name="Box2" type="HBoxContainer" parent="VBoxContainer/Buttons/VBoxContainer"]
+margin_top = 32.0
+margin_right = 364.0
+margin_bottom = 52.0
+
+[node name="ButtonNewEquipable" type="Button" parent="VBoxContainer/Buttons/VBoxContainer/Box2"]
+margin_right = 180.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 120, 0 )
-size_flags_horizontal = 6
+size_flags_horizontal = 7
 size_flags_vertical = 5
-text = "Nueva"
+text = "Nuevo Equipable"
 
-[connection signal="pressed" from="VBoxContainer/MarginContainer/HBoxContainer/ButtonClose" to="." method="_on_ButtonClose_pressed"]
-[connection signal="class_deselected" from="VBoxContainer/MarginContainer2/ClassesList" to="." method="_on_ClassesList_class_deselected"]
-[connection signal="class_selected" from="VBoxContainer/MarginContainer2/ClassesList" to="." method="_on_ClassesList_class_selected"]
-[connection signal="pressed" from="VBoxContainer/Buttons/Box/ButtonDelete" to="." method="_on_ButtonDelete_pressed"]
-[connection signal="pressed" from="VBoxContainer/Buttons/Box/ButtonEdit" to="." method="_on_ButtonEdit_pressed"]
-[connection signal="pressed" from="VBoxContainer/Buttons/Box/ButtonNew" to="." method="_on_ButtonNew_pressed"]
+[node name="ButtonNewWeapon" type="Button" parent="VBoxContainer/Buttons/VBoxContainer/Box2"]
+margin_left = 184.0
+margin_right = 364.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 120, 0 )
+size_flags_horizontal = 7
+size_flags_vertical = 5
+text = "Nueva Arma"
+
+[connection signal="pressed" from="VBoxContainer/Titulo/HBoxContainer/ButtonClose" to="." method="_on_ButtonClose_pressed"]
+[connection signal="selected_item" from="VBoxContainer/Contents/ItemsList" to="." method="_on_ItemsList_selected_item"]
+[connection signal="selected_nothing" from="VBoxContainer/Contents/ItemsList" to="." method="_on_ItemsList_selected_nothing"]
+[connection signal="pressed" from="VBoxContainer/Buttons/VBoxContainer/Box1/ButtonDelete" to="." method="_on_ButtonDelete_pressed"]
+[connection signal="pressed" from="VBoxContainer/Buttons/VBoxContainer/Box1/ButtonEdit" to="." method="_on_ButtonEdit_pressed"]
+[connection signal="pressed" from="VBoxContainer/Buttons/VBoxContainer/Box2/ButtonNewEquipable" to="." method="_on_ButtonNewEquipable_pressed"]
+[connection signal="pressed" from="VBoxContainer/Buttons/VBoxContainer/Box2/ButtonNewWeapon" to="." method="_on_ButtonNewWeapon_pressed"]

@@ -2,5 +2,5 @@ extends Control
 
 onready var explorer = $Explorer
 
-func _on_MenuBar_button_classes_pressed():
+func _on_MenuBar_button_items_pressed():
 	explorer.open()

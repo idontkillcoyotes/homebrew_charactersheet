@@ -34,7 +34,7 @@ margin_right = 90.0
 margin_bottom = 26.0
 custom_styles/separator = SubResource( 1 )
 
-[node name="MenuClasses" type="ToolButton" parent="HBoxContainer"]
+[node name="ButtonClasses" type="ToolButton" parent="HBoxContainer"]
 margin_left = 94.0
 margin_right = 194.0
 margin_bottom = 26.0
@@ -42,8 +42,22 @@ rect_min_size = Vector2( 100, 0 )
 toggle_mode = true
 text = "Estilos"
 
-[node name="VSeparator2" type="VSeparator" parent="HBoxContainer"]
+[node name="VSeparator3" type="VSeparator" parent="HBoxContainer"]
 margin_left = 198.0
+margin_right = 202.0
+margin_bottom = 26.0
+custom_styles/separator = SubResource( 1 )
+
+[node name="ButtonItems" type="ToolButton" parent="HBoxContainer"]
+margin_left = 206.0
+margin_right = 306.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 100, 0 )
+toggle_mode = true
+text = "Items"
+
+[node name="VSeparator2" type="VSeparator" parent="HBoxContainer"]
+margin_left = 310.0
 margin_right = 1162.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
@@ -56,5 +70,6 @@ margin_bottom = 26.0
 rect_min_size = Vector2( 100, 0 )
 text = "Salir"
 
-[connection signal="pressed" from="HBoxContainer/MenuClasses" to="." method="_on_MenuClasses_pressed"]
+[connection signal="pressed" from="HBoxContainer/ButtonClasses" to="." method="_on_ButtonClasses_pressed"]
+[connection signal="pressed" from="HBoxContainer/ButtonItems" to="." method="_on_ButtonItems_pressed"]
 [connection signal="pressed" from="HBoxContainer/ButtonExit" to="." method="_on_ButtonExit_pressed"]

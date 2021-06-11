@@ -64,6 +64,7 @@ func set_property(name:String,value):
 			emit_changed()
 			return OK
 		"attack_range":
+			value = int(value)
 			if value >= 5:
 				attack_range = value
 				emit_changed()
@@ -77,11 +78,13 @@ func set_property(name:String,value):
 				emit_changed()
 			return OK
 		"damage_dice_sides":
+			value = int(value)
 			if value >= 2 and value <=100:
 				damage_dice_sides = value
 				emit_changed()
 			return OK
 		"damage_dice_quantity":
+			value = int(value)
 			if value>=1:
 				damage_dice_quantity = value
 			else:

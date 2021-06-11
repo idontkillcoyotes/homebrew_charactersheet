@@ -264,7 +264,6 @@ align = 1
 valign = 1
 
 [node name="InputAttributes" parent="VBoxContainer/Contents/VBoxContainer/Box4/VBoxContainer" instance=ExtResource( 2 )]
-items = [ "Fuerza", null, false, "Agilidad", null, false, "Inteligencia", null, false, "Astucia", null, false, "Carisma", null, false ]
 
 [node name="SectionDamage" type="HBoxContainer" parent="VBoxContainer/Contents/VBoxContainer"]
 margin_top = 387.0

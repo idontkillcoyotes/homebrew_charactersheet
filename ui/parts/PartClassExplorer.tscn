@@ -105,8 +105,8 @@ size_flags_vertical = 5
 text = "Nueva"
 
 [connection signal="pressed" from="VBoxContainer/MarginContainer/HBoxContainer/ButtonClose" to="." method="_on_ButtonClose_pressed"]
-[connection signal="class_deselected" from="VBoxContainer/MarginContainer2/ClassesList" to="." method="_on_ClassesList_class_deselected"]
-[connection signal="class_selected" from="VBoxContainer/MarginContainer2/ClassesList" to="." method="_on_ClassesList_class_selected"]
+[connection signal="selected_item" from="VBoxContainer/MarginContainer2/ClassesList" to="." method="_on_ClassesList_selected_item"]
+[connection signal="selected_nothing" from="VBoxContainer/MarginContainer2/ClassesList" to="." method="_on_ClassesList_selected_nothing"]
 [connection signal="pressed" from="VBoxContainer/Buttons/Box/ButtonDelete" to="." method="_on_ButtonDelete_pressed"]
 [connection signal="pressed" from="VBoxContainer/Buttons/Box/ButtonEdit" to="." method="_on_ButtonEdit_pressed"]
 [connection signal="pressed" from="VBoxContainer/Buttons/Box/ButtonNew" to="." method="_on_ButtonNew_pressed"]

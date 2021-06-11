@@ -284,14 +284,19 @@ func set_property(name:String,value):
 ###############################################
 
 func _get_proficiency_bonus():
-	if character_level <= 4:
-		return classdata.base_bonus_proficiency
+	if classdata != null:
+		if character_level <= 4:
+			return classdata.base_bonus_proficiency
+		else:
+			var extra = int((character_level-2)/3)
+			return (classdata.base_bonus_proficiency + extra)
 	else:
-		var extra = int((character_level-2)/3)
-		return (classdata.base_bonus_proficiency + extra)
+		return 0
 
 func _get_physical_resistance()->int:
-	var value = classdata.base_physical_resistance
+	var value : int = 0
+	if classdata != null:
+		value += classdata.base_physical_resistance
 	value += get_attribute_mod("agilidad")
 	value += _get_equipped_PF_bonus()
 	value += _get_proficiency_bonus()
@@ -299,14 +304,18 @@ func _get_physical_resistance()->int:
 	return value
 
 func _get_magical_resistance()->int:
-	var value = classdata.base_magical_resistance
+	var value : int = 0
+	if classdata != null:
+		value = classdata.base_magical_resistance
 	value += _get_equipped_MF_bonus()
 	value += _get_proficiency_bonus()
 	value += extra_magical_resistance
 	return value
 
 func _get_reflexes()->int:
-	var value = base_reflexes
+	var value : int = 0
+	if classdata != null:
+		value = base_reflexes
 	value += get_attribute_mod("agilidad")
 	value += _get_proficiency_bonus()
 	value += _get_equipped_REF_bonus()
@@ -314,7 +323,9 @@ func _get_reflexes()->int:
 	return value
 
 func _get_fortaleza()->int:
-	var value = base_fortaleza
+	var value : int = 0
+	if classdata != null:
+		value = base_fortaleza
 	value += get_attribute_mod("fuerza")
 	value += _get_proficiency_bonus()
 	value += _get_equipped_FOR_bonus()

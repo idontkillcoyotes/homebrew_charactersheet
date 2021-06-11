@@ -1,7 +1,7 @@
 extends PanelContainer
 
-signal editor_closed
-signal item_saved
+signal closed
+signal data_saved
 
 var file_name : String = ""
 
@@ -19,20 +19,18 @@ onready var in_damage_dice_quantity = $VBoxContainer/Contents/VBoxContainer/Box6
 
 
 func _ready():
-	_new_item()
+	self.hide()
 
 func _load_item(data:ItemWeapon,file:String):
 	itemdata = data
 	file_name = file
 	_load_data()
-	in_name.editable = false
 	self.show()
 
 func _new_item():
 	itemdata = ItemWeapon.new()
 	file_name = "item_" + str(OS.get_unix_time()) + ".tres"
 	_load_data()
-	in_name.editable = true
 	self.show()
 
 func _load_data():
@@ -69,19 +67,20 @@ func _save_data():
 		return ERR_CANT_CREATE
 	else:
 		print("Item saved as: ",file_name)
-		emit_signal("item_saved")
+		emit_signal("data_saved")
 		return OK
 
 func _on_ButtonSave_pressed():
 	_update_data()
 	_save_data()
 	self.hide()
-	emit_signal("editor_closed")
+	emit_signal("closed")
 
 func _on_ButtonCancel_pressed():
 	self.hide()
-	emit_signal("editor_closed")
+	emit_signal("closed")
 
+# Connected from Explorer
 func _on_Explorer_edit(data,file_name):
 	_load_item(data,file_name)
 func _on_Explorer_new():

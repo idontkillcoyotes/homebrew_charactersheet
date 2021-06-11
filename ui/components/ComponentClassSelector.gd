@@ -24,7 +24,7 @@ func _populate_options():
 	
 	if classes.size()>0:
 		for c in classes:
-			self.add_item(c.name)
+			self.add_item(c["data"].name)
 
 func _update_data():
 	var selected_class = GameDataManager.get_class_by_name(selected_class_name)

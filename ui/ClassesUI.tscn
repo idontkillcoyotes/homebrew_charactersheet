@@ -19,6 +19,7 @@ __meta__ = {
 }
 
 [node name="Explorer" parent="." instance=ExtResource( 2 )]
+visible = false
 
 [node name="Editor" parent="." instance=ExtResource( 3 )]
 visible = false
@@ -35,9 +36,8 @@ margin_right = 325.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 650, 400 )
 
-[connection signal="edit_class" from="Explorer" to="Editor" method="_on_Explorer_edit_class"]
-[connection signal="new_class" from="Explorer" to="Editor" method="_on_Explorer_new_class"]
+[connection signal="edit" from="Explorer" to="Editor" method="_on_Explorer_edit"]
+[connection signal="new" from="Explorer" to="Editor" method="_on_Explorer_new"]
 [connection signal="button_abilities_pressed" from="Editor" to="AbilitiesSelector" method="_on_Editor_button_abilities_pressed"]
-[connection signal="class_saved" from="Editor" to="Explorer" method="_on_Editor_class_saved"]
-[connection signal="editor_closed" from="Editor" to="Explorer" method="_on_Editor_editor_closed"]
-[connection signal="ability_selected" from="AbilitiesSelector" to="Editor" method="_on_AbilitiesSelector_ability_selected"]
+[connection signal="closed" from="Editor" to="Explorer" method="_on_Editor_closed"]
+[connection signal="data_saved" from="Editor" to="Explorer" method="_on_Editor_data_saved"]

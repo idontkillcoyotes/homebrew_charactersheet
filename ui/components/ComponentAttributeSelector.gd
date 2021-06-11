@@ -4,7 +4,6 @@ func get_selected_attributes()->Array:
 	if is_anything_selected():
 		var ids : Array = get_selected_items()
 		var selected : Array = []
-		selected.resize(ids.size())
 		for index in ids:
 			selected.push_back(GameDataManager.get_attribute_by_id(index))
 		

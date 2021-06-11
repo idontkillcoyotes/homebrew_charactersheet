@@ -1,7 +1,5 @@
 extends Control
 
-signal ability_selected(ability_name,value)
-
 export (PackedScene) var picker_scene
 
 onready var container = $MarginContainer/VBoxContainer/Abilities
@@ -28,7 +26,6 @@ func _load_data(data:CharacterClassData):
 		node.set_selected(prof)
 
 func _on_ability_toggled(selected,ability_name):
-	emit_signal("ability_selected",ability_name,selected)
 	class_data.set_ability_prof(ability_name,selected)
 
 func _clear():
@@ -36,7 +33,6 @@ func _clear():
 		node.pressed = false
 
 func _on_ButtonDone_pressed():
-	#_clear()
 	self.hide()
 
 func _on_Editor_button_abilities_pressed(class_data):
