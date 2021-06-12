@@ -1,6 +1,5 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://assets/themes/theme1.tres" type="Theme" id=1]
 [ext_resource path="res://ui/parts/PartClassExplorer.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ui/parts/PartClassEditor.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ui/parts/PartAbilitiesSelector.tscn" type="PackedScene" id=4]
@@ -12,14 +11,12 @@ anchor_bottom = 1.0
 margin_top = 1.1225
 margin_bottom = 1.1225
 mouse_filter = 2
-theme = ExtResource( 1 )
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Explorer" parent="." instance=ExtResource( 2 )]
-visible = false
 
 [node name="Editor" parent="." instance=ExtResource( 3 )]
 visible = false

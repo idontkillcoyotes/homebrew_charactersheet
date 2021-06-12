@@ -8,11 +8,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -189.0
-margin_top = -191.0
-margin_right = 189.0
-margin_bottom = 191.0
-rect_min_size = Vector2( 300, 0 )
+margin_left = -200.0
+margin_top = -250.0
+margin_right = 200.0
+margin_bottom = 250.0
+rect_min_size = Vector2( 400, 500 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -21,67 +21,67 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 371.0
-margin_bottom = 375.0
+margin_right = 393.0
+margin_bottom = 493.0
 
 [node name="Titulo" type="MarginContainer" parent="VBoxContainer"]
-margin_right = 364.0
+margin_right = 386.0
 margin_bottom = 20.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Titulo"]
-margin_right = 364.0
+margin_right = 386.0
 margin_bottom = 20.0
 
 [node name="Label" type="Label" parent="VBoxContainer/Titulo/HBoxContainer"]
 margin_top = 3.0
-margin_right = 320.0
+margin_right = 342.0
 margin_bottom = 17.0
 size_flags_horizontal = 3
 text = "Explorador de items"
 valign = 1
 
 [node name="ButtonClose" type="Button" parent="VBoxContainer/Titulo/HBoxContainer"]
-margin_left = 324.0
-margin_right = 364.0
+margin_left = 346.0
+margin_right = 386.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 40, 0 )
 text = "x"
 
 [node name="Separator1" type="HSeparator" parent="VBoxContainer"]
 margin_top = 24.0
-margin_right = 364.0
+margin_right = 386.0
 margin_bottom = 28.0
 
 [node name="Contents" type="MarginContainer" parent="VBoxContainer"]
 margin_top = 32.0
-margin_right = 364.0
-margin_bottom = 304.0
+margin_right = 386.0
+margin_bottom = 422.0
 size_flags_vertical = 7
 
 [node name="ItemsList" parent="VBoxContainer/Contents" instance=ExtResource( 1 )]
-margin_right = 364.0
-margin_bottom = 272.0
+margin_right = 386.0
+margin_bottom = 390.0
 
 [node name="Separator2" type="HSeparator" parent="VBoxContainer"]
-margin_top = 308.0
-margin_right = 364.0
-margin_bottom = 312.0
+margin_top = 426.0
+margin_right = 386.0
+margin_bottom = 430.0
 
 [node name="Buttons" type="MarginContainer" parent="VBoxContainer"]
-margin_top = 316.0
-margin_right = 364.0
-margin_bottom = 368.0
+margin_top = 434.0
+margin_right = 386.0
+margin_bottom = 486.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Buttons"]
-margin_right = 364.0
+margin_right = 386.0
 margin_bottom = 52.0
 
 [node name="Box1" type="HBoxContainer" parent="VBoxContainer/Buttons/VBoxContainer"]
-margin_right = 364.0
+margin_right = 386.0
 margin_bottom = 20.0
 
 [node name="ButtonDelete" type="Button" parent="VBoxContainer/Buttons/VBoxContainer/Box1"]
-margin_right = 180.0
+margin_right = 191.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 120, 0 )
 size_flags_horizontal = 7
@@ -90,8 +90,8 @@ disabled = true
 text = "Eliminar"
 
 [node name="ButtonEdit" type="Button" parent="VBoxContainer/Buttons/VBoxContainer/Box1"]
-margin_left = 184.0
-margin_right = 364.0
+margin_left = 195.0
+margin_right = 386.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 120, 0 )
 size_flags_horizontal = 7
@@ -101,16 +101,16 @@ text = "Editar"
 
 [node name="Separator" type="HSeparator" parent="VBoxContainer/Buttons/VBoxContainer"]
 margin_top = 24.0
-margin_right = 364.0
+margin_right = 386.0
 margin_bottom = 28.0
 
 [node name="Box2" type="HBoxContainer" parent="VBoxContainer/Buttons/VBoxContainer"]
 margin_top = 32.0
-margin_right = 364.0
+margin_right = 386.0
 margin_bottom = 52.0
 
 [node name="ButtonNewEquipable" type="Button" parent="VBoxContainer/Buttons/VBoxContainer/Box2"]
-margin_right = 180.0
+margin_right = 191.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 120, 0 )
 size_flags_horizontal = 7
@@ -118,14 +118,15 @@ size_flags_vertical = 5
 text = "Nuevo Equipable"
 
 [node name="ButtonNewWeapon" type="Button" parent="VBoxContainer/Buttons/VBoxContainer/Box2"]
-margin_left = 184.0
-margin_right = 364.0
+margin_left = 195.0
+margin_right = 386.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 120, 0 )
 size_flags_horizontal = 7
 size_flags_vertical = 5
 text = "Nueva Arma"
 
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="pressed" from="VBoxContainer/Titulo/HBoxContainer/ButtonClose" to="." method="_on_ButtonClose_pressed"]
 [connection signal="selected_item" from="VBoxContainer/Contents/ItemsList" to="." method="_on_ItemsList_selected_item"]
 [connection signal="selected_nothing" from="VBoxContainer/Contents/ItemsList" to="." method="_on_ItemsList_selected_nothing"]

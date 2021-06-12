@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Control",
 "class": "Attribute",
 "language": "GDScript",
-"path": "res://ui/parts/PartCharacterAttribute.gd"
+"path": "res://ui/components/ComponentCharacterAttribute.gd"
 }, {
 "base": "Resource",
 "class": "CharacterClassData",
@@ -67,8 +67,9 @@ CharacterDataManager="*res://autoload/CharacterDataManager.gd"
 
 [display]
 
-window/size/width=1280
-window/size/height=720
+window/size/width=1920
+window/size/height=1080
+window/size/fullscreen=true
 
 [physics]
 

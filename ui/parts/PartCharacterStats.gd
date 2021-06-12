@@ -1,7 +1,8 @@
-extends HBoxContainer
+extends Control
 
 export (PackedScene) var stat_scene
 
+onready var container = $PanelContainer/MarginContainer/Container
 
 func _ready():
 	_populate()
@@ -12,5 +13,4 @@ func _populate():
 		var node = stat_scene.instance()
 		node.set_display_name(stats[key])
 		node.set_stat_name(key)
-		add_child(node)
-	
+		container.add_child(node)

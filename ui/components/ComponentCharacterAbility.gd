@@ -14,8 +14,10 @@ var attribute : String = ""
 
 func _ready():
 	CharacterDataManager.connect("data_updated",self,"_on_data_updated")
-	
 	label_name.text = _get_ability_text()
+	CharacterDataManager.connect("data_loaded",self,"_on_character_data_loaded")
+	
+func _on_character_data_loaded():
 	_load_data()
 
 func _load_data():
@@ -42,7 +44,13 @@ func _calculate():
 	if prof:
 		mod +=3
 	
-	label_mod.text = "Total: +"+str(mod)
+	_update_mod()
+
+func _update_mod():
+	if mod>=0:
+		label_mod.text = "Total: +"+str(mod)
+	else:
+		label_mod.text = "Total: "+str(mod)
 
 func _get_ability_text()->String:
 	var text = ability_name

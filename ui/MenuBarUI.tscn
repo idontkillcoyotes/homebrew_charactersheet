@@ -1,40 +1,53 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://ui/MenuCharacter.gd" type="Script" id=1]
 [ext_resource path="res://ui/MenuBarUI.gd" type="Script" id=2]
+[ext_resource path="res://ui/ClassesUI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ui/ItemsUI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/themes/theme1.tres" type="Theme" id=5]
+[ext_resource path="res://ui/parts/PartCharacterExplorer.tscn" type="PackedScene" id=6]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
-[node name="MenuBar" type="PanelContainer"]
-anchor_right = 1.0
-margin_bottom = 14.0
-rect_min_size = Vector2( 0, 40 )
+[node name="MenuBar" type="MarginContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 1913.0
+margin_bottom = 33.0
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="."]
+margin_right = 1906.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 40 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 1273.0
+margin_right = 1899.0
 margin_bottom = 33.0
 
-[node name="MenuCharacter" type="MenuButton" parent="HBoxContainer"]
+[node name="MenuCharacter" type="MenuButton" parent="PanelContainer/HBoxContainer"]
 margin_right = 82.0
 margin_bottom = 26.0
 text = "Personajes"
 script = ExtResource( 1 )
 
-[node name="VSeparator1" type="VSeparator" parent="HBoxContainer"]
+[node name="VSeparator1" type="VSeparator" parent="PanelContainer/HBoxContainer"]
 margin_left = 86.0
 margin_right = 90.0
 margin_bottom = 26.0
 custom_styles/separator = SubResource( 1 )
 
-[node name="ButtonClasses" type="ToolButton" parent="HBoxContainer"]
+[node name="ButtonClasses" type="ToolButton" parent="PanelContainer/HBoxContainer"]
 margin_left = 94.0
 margin_right = 194.0
 margin_bottom = 26.0
@@ -42,13 +55,13 @@ rect_min_size = Vector2( 100, 0 )
 toggle_mode = true
 text = "Estilos"
 
-[node name="VSeparator3" type="VSeparator" parent="HBoxContainer"]
+[node name="VSeparator3" type="VSeparator" parent="PanelContainer/HBoxContainer"]
 margin_left = 198.0
 margin_right = 202.0
 margin_bottom = 26.0
 custom_styles/separator = SubResource( 1 )
 
-[node name="ButtonItems" type="ToolButton" parent="HBoxContainer"]
+[node name="ButtonItems" type="ToolButton" parent="PanelContainer/HBoxContainer"]
 margin_left = 206.0
 margin_right = 306.0
 margin_bottom = 26.0
@@ -56,20 +69,49 @@ rect_min_size = Vector2( 100, 0 )
 toggle_mode = true
 text = "Items"
 
-[node name="VSeparator2" type="VSeparator" parent="HBoxContainer"]
+[node name="VSeparator2" type="VSeparator" parent="PanelContainer/HBoxContainer"]
 margin_left = 310.0
-margin_right = 1162.0
+margin_right = 1788.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
 custom_styles/separator = SubResource( 2 )
 
-[node name="ButtonExit" type="ToolButton" parent="HBoxContainer"]
-margin_left = 1166.0
-margin_right = 1266.0
+[node name="ButtonExit" type="ToolButton" parent="PanelContainer/HBoxContainer"]
+margin_left = 1792.0
+margin_right = 1892.0
 margin_bottom = 26.0
 rect_min_size = Vector2( 100, 0 )
 text = "Salir"
 
-[connection signal="pressed" from="HBoxContainer/ButtonClasses" to="." method="_on_ButtonClasses_pressed"]
-[connection signal="pressed" from="HBoxContainer/ButtonItems" to="." method="_on_ButtonItems_pressed"]
-[connection signal="pressed" from="HBoxContainer/ButtonExit" to="." method="_on_ButtonExit_pressed"]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemsUI" parent="CanvasLayer/Control" instance=ExtResource( 4 )]
+
+[node name="ClassesUI" parent="CanvasLayer/Control" instance=ExtResource( 3 )]
+
+[node name="CharacterUI" type="Control" parent="CanvasLayer/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Explorer" parent="CanvasLayer/Control/CharacterUI" instance=ExtResource( 6 )]
+
+[connection signal="button_classes_pressed" from="." to="CanvasLayer/Control/ClassesUI" method="_on_MenuBar_button_classes_pressed"]
+[connection signal="button_items_pressed" from="." to="CanvasLayer/Control/ItemsUI" method="_on_MenuBar_button_items_pressed"]
+[connection signal="button_load_pressed" from="PanelContainer/HBoxContainer/MenuCharacter" to="CanvasLayer/Control/CharacterUI/Explorer" method="_on_MenuCharacter_button_load_pressed"]
+[connection signal="close_character" from="PanelContainer/HBoxContainer/MenuCharacter" to="." method="_on_MenuCharacter_close_character"]
+[connection signal="pressed" from="PanelContainer/HBoxContainer/ButtonClasses" to="." method="_on_ButtonClasses_pressed"]
+[connection signal="pressed" from="PanelContainer/HBoxContainer/ButtonItems" to="." method="_on_ButtonItems_pressed"]
+[connection signal="pressed" from="PanelContainer/HBoxContainer/ButtonExit" to="." method="_on_ButtonExit_pressed"]

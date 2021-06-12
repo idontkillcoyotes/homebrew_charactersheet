@@ -6,43 +6,35 @@ enum ATTACK_TYPE {
 	RANGED
 }
 
-var attributes : Dictionary ={
-	"Fuerza":0,
-	"Agilidad":1,
-	"Inteligencia":2,
-	"Astucia":3,
-	"Carisma":4
-}
-
 export (String) var weapon_class = ""
 
 export (ATTACK_TYPE) var attack_type = 0
 export (int,5,10000) var attack_range = 5
 
 export (Array,String) var attack_roll_attributes = []
-export (String) var selected_attack_roll_attribute = 0
 
 export (String) var damage_type = ""
 export (int,2,100) var damage_dice_sides = 2
 export (int,1,100) var damage_dice_quantity = 1
 
-func add_attack_roll_attribute(attribute:String):
-	if attributes.has(attribute):
-		attack_roll_attributes.push_back(attribute)
-
-func select_attack_roll_attribute(attribute:String):
-	if attack_roll_attributes.has(attribute):
-		selected_attack_roll_attribute = attribute
+func set_attack_roll_attribute(list:Array):
+	attack_roll_attributes = []
+	for item in list:
+		attack_roll_attributes.push_back(item)
 
 func get_attack_roll_attributes()->Array:
 	return attack_roll_attributes
 
-func get_attack()->Dictionary:
+func get_attack_data()->Dictionary:
 	return {
-		"dice_quantity": damage_dice_quantity,
-		"dice_sides": damage_dice_sides,
-		"attribute_mod": selected_attack_roll_attribute,
-		"weapon_class": weapon_class
+		"name": str(item_name),
+		"dice_quantity": str(damage_dice_quantity),
+		"damage_dice": str(damage_dice_sides),
+		"damage_type": str(damage_type),
+		"attribute_mod": str(attack_roll_attributes),
+		"class": str(weapon_class),
+		"attack_type":attack_type,
+		"range": str(attack_range)
 	}
 
 func set_property(name:String,value):

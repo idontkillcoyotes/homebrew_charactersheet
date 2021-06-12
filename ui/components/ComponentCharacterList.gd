@@ -5,22 +5,29 @@ signal selected_nothing
 
 var selected_item_index : int = -1
 
-func _ready():
+func reload():
 	_populate()
 
-func reload():
+func _ready():
 	_populate()
 
 func _populate():
 	selected_item_index = 0
 	self.clear()
-	GameDataManager.update_items()
-	var items = GameDataManager.get_items()	
+	CharacterDataManager.update_characters()
+	var items = CharacterDataManager.get_characters()
+	
 	if items.size()>0:
 		var i : int = 0
+		var noname_count : int = 0
 		for item in items:
-			var data = item["data"]
-			var name : String = data.get_property("name")
+			var data : CharacterData = item["data"]
+			var name : String = data.character_name
+			if name == "":
+				name = "personaje sin nombre"
+				if noname_count >= 1:
+					name +=" ("+str(noname_count)+")"
+				noname_count += 1
 			add_item(name)
 			var meta : Dictionary = {
 				"id":i

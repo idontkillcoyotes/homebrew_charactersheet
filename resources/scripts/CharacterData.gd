@@ -134,9 +134,21 @@ export var inventory : Array = []
 # PUBLIC METHODS
 ###################################################
 
-func add_item(item:Item):
-	inventory.push_back(item)
+func add_inventory_item(item:Item):
+	var entry : Dictionary = {
+		"data": item,
+		"equiped" : false
+	}
+	inventory.push_back(entry)
 	emit_changed()
+
+func set_item_equiped(index:int,value:bool):
+	var item : Dictionary = inventory[index]
+	item["equiped"] = value
+	emit_changed()
+
+func get_inventory()->Array:
+	return inventory
 
 func set_class_data(data:CharacterClassData):
 	classdata = data
@@ -177,6 +189,7 @@ func get_ability_level(ability:String)->int:
 		return ability_points[ability]["level"]
 	else:
 		return 0
+
 func get_ability_extra(ability:String)->int:
 	if ability_points.has(ability):
 		return ability_points[ability]["extra"]
@@ -298,7 +311,7 @@ func _get_physical_resistance()->int:
 	if classdata != null:
 		value += classdata.base_physical_resistance
 	value += get_attribute_mod("agilidad")
-	value += _get_equipped_PF_bonus()
+	value += _get_equipped_PR_bonus()
 	value += _get_proficiency_bonus()
 	value += extra_physical_resistance
 	return value
@@ -307,7 +320,7 @@ func _get_magical_resistance()->int:
 	var value : int = 0
 	if classdata != null:
 		value = classdata.base_magical_resistance
-	value += _get_equipped_MF_bonus()
+	value += _get_equipped_MR_bonus()
 	value += _get_proficiency_bonus()
 	value += extra_magical_resistance
 	return value
@@ -336,13 +349,41 @@ func _on_class_changed():
 	emit_changed()
 
 # Calculated based on inventory and/or feats
-func _get_equipped_PF_bonus()->int:
-	return 0
-func _get_equipped_MF_bonus()->int:
-	return 0
+func _get_equipped_PR_bonus()->int:
+	var sum : int = 0
+	if inventory.size()>0:
+		for item in inventory:
+			var data = item["data"]
+			var equiped = item["equiped"]
+			if equiped:
+				sum += data.get_bonus_PR()
+	return sum
+
+func _get_equipped_MR_bonus()->int:
+	var sum : int = 0
+	if inventory.size()>0:
+		for item in inventory:
+			var data = item["data"]
+			var equiped = item["equiped"]
+			if equiped:
+				sum += data.get_bonus_MR()
+	return sum
 func _get_equipped_REF_bonus()->int:
-	return 0
+	var sum : int = 0
+	if inventory.size()>0:
+		for item in inventory:
+			var data = item["data"]
+			var equiped = item["equiped"]
+			if equiped:
+				sum += data.get_bonus_reflexes()
+	return sum
 func _get_equipped_FOR_bonus()->int:
-	return 0
-func _get_ability_bonus(attribute:String,ability:String)->int:
-	return 0
+	var sum : int = 0
+	if inventory.size()>0:
+		for item in inventory:
+			var data = item["data"]
+			var equiped = item["equiped"]
+			if equiped:
+				sum += data.get_bonus_fortaleza()
+	return sum
+

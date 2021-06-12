@@ -1,9 +1,13 @@
 extends MenuButton
 
+signal button_load_pressed
+signal close_character
+
 const OPTIONS = {
 	0:"Nuevo Personaje",
 	1:"Cargar Personaje",
-	2:"Guardar Personaje"
+	2:"Guardar Personaje",
+	3:"Cerrar"
 }
 var popup: PopupMenu
 
@@ -20,10 +24,10 @@ func _populate():
 			popup.add_separator("",k)
 
 func _new_character():
-	CharacterDataManager.new_character("oliver.tres")
+	CharacterDataManager.new_character()
 
 func _load_character():
-	CharacterDataManager.load_character("oliver.tres")
+	emit_signal("button_load_pressed")
 
 func _save_character():
 	CharacterDataManager.save_character()
@@ -36,4 +40,6 @@ func _on_index_pressed(index):
 			_load_character()
 		"Guardar Personaje":
 			_save_character()
+		"Cerrar":
+			emit_signal("close_character")
 	

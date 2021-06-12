@@ -4,6 +4,10 @@ var selected_class_name : String = ""
 
 func _ready():
 	_populate_options()
+	CharacterDataManager.connect("data_loaded",self,"_on_character_data_loaded")
+	
+
+func _on_character_data_loaded():
 	_load_data()
 
 func _load_data():

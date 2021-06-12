@@ -1,0 +1,74 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://ui/components/ComponentInventoryItem.gd" type="Script" id=2]
+[ext_resource path="res://ui/components/ComponentNumberImput.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ui/components/ComponentInputToggle.tscn" type="PackedScene" id=4]
+
+[node name="InventoryItem" type="HBoxContainer"]
+margin_right = 1876.0
+margin_bottom = 14.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InputEquiped" parent="." instance=ExtResource( 4 )]
+margin_right = 75.0
+rect_min_size = Vector2( 75, 0 )
+
+[node name="Separator1" type="VSeparator" parent="."]
+margin_left = 79.0
+margin_right = 83.0
+margin_bottom = 24.0
+
+[node name="InputName" type="LineEdit" parent="."]
+margin_left = 87.0
+margin_right = 1428.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+
+[node name="Separator2" type="VSeparator" parent="."]
+margin_left = 1432.0
+margin_right = 1436.0
+margin_bottom = 24.0
+
+[node name="InputPR" parent="." instance=ExtResource( 3 )]
+margin_left = 1440.0
+margin_right = 1540.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 100, 0 )
+
+[node name="Separator3" type="VSeparator" parent="."]
+margin_left = 1544.0
+margin_right = 1548.0
+margin_bottom = 24.0
+
+[node name="InputMR" parent="." instance=ExtResource( 3 )]
+margin_left = 1552.0
+margin_right = 1652.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 100, 0 )
+
+[node name="Separator4" type="VSeparator" parent="."]
+margin_left = 1656.0
+margin_right = 1660.0
+margin_bottom = 24.0
+
+[node name="InputRef" parent="." instance=ExtResource( 3 )]
+margin_left = 1664.0
+margin_right = 1764.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 100, 0 )
+
+[node name="Separator5" type="VSeparator" parent="."]
+margin_left = 1768.0
+margin_right = 1772.0
+margin_bottom = 24.0
+
+[node name="InputFort" parent="." instance=ExtResource( 3 )]
+margin_left = 1776.0
+margin_right = 1876.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 100, 0 )
+
+[connection signal="pressed" from="InputEquiped" to="." method="_on_InputEquiped_pressed"]

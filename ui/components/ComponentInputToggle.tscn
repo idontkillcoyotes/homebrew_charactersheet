@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://ui/components/ComponentInputToggle.gd" type="Script" id=1]
+
+[node name="InputToggle" type="CheckBox"]
+margin_right = 49.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 50, 0 )
+size_flags_horizontal = 4
+text = "NO"
+align = 1
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="toggled" from="." to="." method="_on_InputToggle_toggled"]

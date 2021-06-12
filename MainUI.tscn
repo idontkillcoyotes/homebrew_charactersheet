@@ -1,10 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://ui/MenuBarUI.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ui/CharacterSheetUI.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/themes/theme1.tres" type="Theme" id=3]
-[ext_resource path="res://ui/ClassesUI.tscn" type="PackedScene" id=4]
-[ext_resource path="res://ui/ItemsUI.tscn" type="PackedScene" id=6]
 
 [node name="Main" type="Control"]
 anchor_right = 1.0
@@ -12,16 +10,19 @@ anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_right = 1280.0
-margin_bottom = 720.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 color = Color( 0.270588, 0.231373, 0.184314, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Contents" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
@@ -30,55 +31,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
-margin_right = 1280.0
-margin_bottom = 42.0
-size_flags_horizontal = 7
-custom_constants/margin_right = 5
-custom_constants/margin_top = 2
-custom_constants/margin_left = 5
+[node name="MenuBar" parent="Contents" instance=ExtResource( 1 )]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 1920.0
+margin_bottom = 40.0
 
-[node name="MenuBar" parent="VBoxContainer/MarginContainer2" instance=ExtResource( 1 )]
-anchor_right = 0.0
-margin_left = 5.0
-margin_top = 2.0
-margin_right = 1275.0
-margin_bottom = 42.0
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
-margin_top = 46.0
-margin_right = 1280.0
-margin_bottom = 720.0
-size_flags_horizontal = 7
-size_flags_vertical = 3
-custom_constants/margin_right = 5
-custom_constants/margin_left = 5
-
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer"]
-margin_left = 5.0
-margin_right = 1275.0
-margin_bottom = 674.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 7
-size_flags_vertical = 7
-scroll_horizontal_enabled = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="CharacterSheet" parent="VBoxContainer/MarginContainer/ScrollContainer" instance=ExtResource( 2 )]
+[node name="CharacterSheet" parent="Contents" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 5.0
-margin_top = 5.0
-margin_right = 1257.0
-margin_bottom = 704.0
-theme = null
+margin_top = 44.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="ItemsUI" parent="." instance=ExtResource( 6 )]
-
-[node name="ClassesUI" parent="." instance=ExtResource( 4 )]
-
-[connection signal="button_classes_pressed" from="VBoxContainer/MarginContainer2/MenuBar" to="ClassesUI" method="_on_MenuBar_button_classes_pressed"]
-[connection signal="button_items_pressed" from="VBoxContainer/MarginContainer2/MenuBar" to="ItemsUI" method="_on_MenuBar_button_items_pressed"]
+[connection signal="button_close_sheet_pressed" from="Contents/MenuBar" to="Contents/CharacterSheet" method="_on_MenuBar_button_close_sheet_pressed"]

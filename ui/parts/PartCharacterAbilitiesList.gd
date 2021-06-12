@@ -1,8 +1,8 @@
-extends PanelContainer
+extends Control
 
 export (PackedScene) var ability_scene
 
-onready var container = $GridContainer/ScrollContainer/List
+onready var container = $PanelContainer/GridContainer/PanelContainer/List
 
 func _ready():
 	_populate()

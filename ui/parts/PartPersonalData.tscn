@@ -4,109 +4,141 @@
 [ext_resource path="res://ui/components/ComponentClassSelector.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ui/components/ComponentNumberImput.tscn" type="PackedScene" id=3]
 
-[node name="CharData" type="VBoxContainer"]
-margin_right = 500.0
-margin_bottom = 68.0
-rect_min_size = Vector2( 500, 0 )
-size_flags_horizontal = 7
-size_flags_vertical = 7
-custom_constants/separation = 20
+[node name="PersonalData" type="MarginContainer"]
+margin_right = 335.0
+margin_bottom = 82.0
+size_flags_horizontal = 3
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 5
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBox1" type="HBoxContainer" parent="."]
-margin_right = 500.0
+[node name="PanelContainer" type="PanelContainer" parent="."]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 429.0
+margin_bottom = 97.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 417.0
+margin_bottom = 85.0
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBox" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 405.0
+margin_bottom = 73.0
+rect_min_size = Vector2( 400, 0 )
+size_flags_horizontal = 7
+size_flags_vertical = 7
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBox1" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBox"]
+margin_right = 400.0
 margin_bottom = 24.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LabelName" type="Label" parent="HBox1"]
+[node name="LabelName" type="Label" parent="PanelContainer/MarginContainer/VBox/HBox1"]
 margin_top = 5.0
 margin_right = 56.0
 margin_bottom = 19.0
 text = "Nombre:"
 
-[node name="InputName" type="LineEdit" parent="HBox1"]
+[node name="InputName" type="LineEdit" parent="PanelContainer/MarginContainer/VBox/HBox1"]
 margin_left = 60.0
-margin_right = 400.0
+margin_right = 300.0
 margin_bottom = 24.0
 size_flags_horizontal = 7
 max_length = 256
 
-[node name="LabelAge" type="Label" parent="HBox1"]
-margin_left = 404.0
+[node name="LabelAge" type="Label" parent="PanelContainer/MarginContainer/VBox/HBox1"]
+margin_left = 304.0
 margin_top = 5.0
-margin_right = 438.0
+margin_right = 338.0
 margin_bottom = 19.0
 text = "Edad:"
 
-[node name="InputAge" parent="HBox1" instance=ExtResource( 3 )]
-margin_left = 442.0
-margin_right = 500.0
+[node name="InputAge" parent="PanelContainer/MarginContainer/VBox/HBox1" instance=ExtResource( 3 )]
+margin_left = 342.0
+margin_right = 400.0
 margin_bottom = 24.0
 max_length = 4
 max_value = 999
 
-[node name="HBox2" type="HBoxContainer" parent="."]
+[node name="HBox2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBox"]
 margin_top = 44.0
-margin_right = 500.0
+margin_right = 400.0
 margin_bottom = 68.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LabelClass" type="Label" parent="HBox2"]
+[node name="LabelClass" type="Label" parent="PanelContainer/MarginContainer/VBox/HBox2"]
 margin_top = 5.0
 margin_right = 39.0
 margin_bottom = 19.0
 text = "Estilo:"
 
-[node name="ClassSelector" parent="HBox2" instance=ExtResource( 2 )]
-margin_right = 251.0
+[node name="ClassSelector" parent="PanelContainer/MarginContainer/VBox/HBox2" instance=ExtResource( 2 )]
+margin_right = 151.0
 
-[node name="VSeparator" type="VSeparator" parent="HBox2"]
-margin_left = 255.0
-margin_right = 259.0
+[node name="VSeparator" type="VSeparator" parent="PanelContainer/MarginContainer/VBox/HBox2"]
+margin_left = 155.0
+margin_right = 159.0
 margin_bottom = 24.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LabelLevel" type="Label" parent="HBox2"]
-margin_left = 263.0
+[node name="LabelLevel" type="Label" parent="PanelContainer/MarginContainer/VBox/HBox2"]
+margin_left = 163.0
 margin_top = 5.0
-margin_right = 300.0
+margin_right = 200.0
 margin_bottom = 19.0
 text = "Nivel:"
 
-[node name="InputLevel" parent="HBox2" instance=ExtResource( 3 )]
-margin_left = 304.0
-margin_right = 362.0
+[node name="InputLevel" parent="PanelContainer/MarginContainer/VBox/HBox2" instance=ExtResource( 3 )]
+margin_left = 204.0
+margin_right = 262.0
 margin_bottom = 24.0
 max_length = 4
 value = 1
 min_value = 1
 max_value = 100
 
-[node name="LabelExp" type="Label" parent="HBox2"]
-margin_left = 366.0
+[node name="LabelExp" type="Label" parent="PanelContainer/MarginContainer/VBox/HBox2"]
+margin_left = 266.0
 margin_top = 5.0
-margin_right = 396.0
+margin_right = 296.0
 margin_bottom = 19.0
 text = "Exp.:"
 
-[node name="InputExp" parent="HBox2" instance=ExtResource( 3 )]
-margin_left = 400.0
-margin_right = 500.0
+[node name="InputExp" parent="PanelContainer/MarginContainer/VBox/HBox2" instance=ExtResource( 3 )]
+margin_left = 300.0
+margin_right = 400.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 100, 0 )
 max_length = 10
 
-[connection signal="focus_exited" from="HBox1/InputName" to="." method="_on_InputName_focus_exited"]
-[connection signal="text_entered" from="HBox1/InputName" to="." method="_on_InputName_text_entered"]
-[connection signal="editing_stopped" from="HBox1/InputAge" to="." method="_on_InputAge_editing_stopped"]
-[connection signal="editing_stopped" from="HBox2/InputLevel" to="." method="_on_InputLevel_editing_stopped"]
-[connection signal="editing_stopped" from="HBox2/InputExp" to="." method="_on_InputExp_editing_stopped"]
+[connection signal="text_entered" from="PanelContainer/MarginContainer/VBox/HBox1/InputName" to="." method="_on_InputName_text_entered"]
+[connection signal="editing_stopped" from="PanelContainer/MarginContainer/VBox/HBox1/InputAge" to="." method="_on_Input_editing_stopped"]
+[connection signal="editing_stopped" from="PanelContainer/MarginContainer/VBox/HBox2/InputLevel" to="." method="_on_Input_editing_stopped"]
+[connection signal="editing_stopped" from="PanelContainer/MarginContainer/VBox/HBox2/InputExp" to="." method="_on_Input_editing_stopped"]

@@ -1,14 +1,17 @@
-extends VBoxContainer
+extends Control
 
-onready var atr1 = $Attribute1
-onready var atr2 = $Attribute2
-onready var atr3 = $Attribute3
-onready var atr4 = $Attribute4
-onready var atr5 = $Attribute5
+onready var atr1 = $PanelContainer/VBoxContainer/Attribute1
+onready var atr2 = $PanelContainer/VBoxContainer/Attribute2
+onready var atr3 = $PanelContainer/VBoxContainer/Attribute3
+onready var atr4 = $PanelContainer/VBoxContainer/Attribute4
+onready var atr5 = $PanelContainer/VBoxContainer/Attribute5
 
 func _ready():
-	_load_data()
+	CharacterDataManager.connect("data_loaded",self,"_on_character_data_loaded")
 	
+func _on_character_data_loaded():
+	_load_data()
+
 func _load_data():
 	var chardata = CharacterDataManager.get_current_character()
 	var char_attr = chardata.attributes

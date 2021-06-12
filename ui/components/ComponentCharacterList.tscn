@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://ui/components/ComponentItemsList.gd" type="Script" id=1]
+[ext_resource path="res://ui/components/ComponentCharacterList.gd" type="Script" id=1]
 
-[node name="ItemsList" type="ItemList"]
+[node name="CharacterList" type="ItemList"]
 margin_right = 404.0
 margin_bottom = 302.0
 script = ExtResource( 1 )

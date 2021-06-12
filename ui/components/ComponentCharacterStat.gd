@@ -15,6 +15,9 @@ func _ready():
 	button_name.disabled = not rolleable
 	input.editable = editable
 	button_name.text = display_name
+	CharacterDataManager.connect("data_loaded",self,"_on_character_data_loaded")
+
+func _on_character_data_loaded():
 	_load_data()
 
 func get_value()->int:
