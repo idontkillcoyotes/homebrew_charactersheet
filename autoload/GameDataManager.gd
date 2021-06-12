@@ -1,5 +1,8 @@
 extends Node
 
+signal classes_updated
+signal items_updated
+
 const classes_path := "user://gamedata/classes"
 const items_path := "user://gamedata/items"
 const characters_path := "user://user/characters"
@@ -50,9 +53,15 @@ var classes : Array = []
 var items : Array = []
 
 
+func delete_file(file_name:String,path:String):
+	var dir = Directory.new()
+	var fullpath = path+"/"+file_name
+	print("About to delete file: ",fullpath)
+	return dir.remove(fullpath)
+
 func update_classes():
 	_load_classes()
-
+	
 func update_items():
 	_load_items()
 
@@ -143,6 +152,8 @@ func _load_classes():
 					}
 					classes.push_back(entry)
 			file_name = dir.get_next()
+		
+		emit_signal("classes_updated")
 	else:
 		print("An error occurred when trying to access the game classes folder.")
 		_create_directories()
@@ -166,6 +177,7 @@ func _load_items():
 					}
 					items.push_back(entry)
 			file_name = dir.get_next()
+		emit_signal("items_updated")
 	else:
 		print("An error occurred when trying to access the game items folder.")
 		_create_directories()

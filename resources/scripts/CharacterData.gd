@@ -130,13 +130,15 @@ export var ability_points = {
 # Inventory
 export var inventory : Array = []
 
+export var notes : String = ""
+
 ###################################################
 # PUBLIC METHODS
 ###################################################
 
 func add_inventory_item(item:Item):
 	var entry : Dictionary = {
-		"data": item,
+		"data": item.duplicate(true),
 		"equiped" : false
 	}
 	inventory.push_back(entry)
@@ -237,6 +239,8 @@ func get_property(name:String):
 			return extra_reflexes_bonus
 		"extra_fortaleza":
 			return extra_fortaleza_bonus
+		"notes":
+			return notes
 		_:
 			return null
 
@@ -285,6 +289,10 @@ func set_property(name:String,value):
 			return OK
 		"extra_fortaleza":
 			extra_fortaleza_bonus = value
+			emit_changed()
+			return OK
+		"notes":
+			notes = value
 			emit_changed()
 			return OK
 		_:

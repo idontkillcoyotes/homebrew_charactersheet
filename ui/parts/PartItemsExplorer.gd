@@ -16,6 +16,7 @@ var selected : Dictionary
 
 func open():
 	self.show()
+	_set_disable_buttons(true,false)
 	item_list.reload()
 
 func close():
@@ -26,12 +27,11 @@ func _ready():
 	_set_disable_buttons(true,false)
 	self.hide()
 
-func _set_disable_buttons(value:bool,new_buttons:bool):
-	btn_delete.disabled=value
-	btn_edit.disabled=value
-	if new_buttons:
-		btn_new_equipable.disabled=value
-		btn_new_weapon.disabled=value
+func _set_disable_buttons(val1:bool,val2:bool):
+	btn_delete.disabled=val1
+	btn_edit.disabled=val1
+	btn_new_equipable.disabled=val2
+	btn_new_weapon.disabled=val2
 
 func _on_ButtonClose_pressed():
 	close()
@@ -50,8 +50,11 @@ func _on_Editor_closed():
 	_set_disable_buttons(true,false)
 	
 func _on_ButtonDelete_pressed():
-	#TODO: delete
-	pass # Replace with function body.
+	var error = GameDataManager.delete_file(selected["file_name"],GameDataManager.items_path)
+	if error != OK:
+		print("There was an error while trying to delete an item file.")
+	else:
+		item_list.reload()
 
 func _on_ButtonEdit_pressed():
 	_set_disable_buttons(true,true)

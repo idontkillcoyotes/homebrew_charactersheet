@@ -4,8 +4,11 @@ var selected_class_name : String = ""
 
 func _ready():
 	_populate_options()
+	GameDataManager.connect("classes_updated",self,"_on_classes_data_updated")
 	CharacterDataManager.connect("data_loaded",self,"_on_character_data_loaded")
-	
+
+func _on_classes_data_updated():
+	_populate_options()
 
 func _on_character_data_loaded():
 	_load_data()
@@ -24,6 +27,8 @@ func _load_data():
 	select(id)
 
 func _populate_options():
+	self.clear()
+	
 	var classes = GameDataManager.get_classes()
 	
 	if classes.size()>0:
@@ -40,7 +45,8 @@ func _update_data():
 
 func _select_class():
 	selected_class_name = get_item_text(get_selected_id())
-	_update_data()
+	if selected_class_name != "":
+		_update_data()
 
 func _on_ClassSelector_item_selected(_index):
 	_select_class()

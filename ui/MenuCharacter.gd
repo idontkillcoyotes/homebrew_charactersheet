@@ -12,9 +12,14 @@ const OPTIONS = {
 var popup: PopupMenu
 
 func _ready():
+	CharacterDataManager.connect("data_loaded",self,"_on_character_data_loaded")
 	popup = get_popup()
 	popup.connect("index_pressed",self,"_on_index_pressed")
 	_populate()
+
+func _on_character_data_loaded():
+	popup.set_item_disabled(2,false)
+	popup.set_item_disabled(3,false)
 
 func _populate():
 	for k in OPTIONS.keys():
@@ -22,6 +27,9 @@ func _populate():
 			popup.add_item(OPTIONS[k],k)
 		else:
 			popup.add_separator("",k)
+	
+	popup.set_item_disabled(2,true)
+	popup.set_item_disabled(3,true)
 
 func _new_character():
 	CharacterDataManager.new_character()
@@ -32,6 +40,11 @@ func _load_character():
 func _save_character():
 	CharacterDataManager.save_character()
 
+func _close_character():
+	popup.set_item_disabled(2,true)
+	popup.set_item_disabled(3,true)
+	emit_signal("close_character")
+
 func _on_index_pressed(index):
 	match OPTIONS[index]:
 		"Nuevo Personaje":
@@ -41,5 +54,6 @@ func _on_index_pressed(index):
 		"Guardar Personaje":
 			_save_character()
 		"Cerrar":
-			emit_signal("close_character")
+			_close_character()
+
 	

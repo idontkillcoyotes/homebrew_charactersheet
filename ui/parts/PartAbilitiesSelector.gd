@@ -23,7 +23,7 @@ func _load_data(data:CharacterClassData):
 	for node in container.get_children():
 		var name = node.get_ability_name()
 		var prof = class_data.get_ability_prof(name)
-		node.set_selected(prof)
+		node.set_pressed(prof)
 
 func _on_ability_toggled(selected,ability_name):
 	class_data.set_ability_prof(ability_name,selected)

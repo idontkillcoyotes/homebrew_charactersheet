@@ -52,7 +52,6 @@ margin_left = 94.0
 margin_right = 194.0
 margin_bottom = 26.0
 rect_min_size = Vector2( 100, 0 )
-toggle_mode = true
 text = "Estilos"
 
 [node name="VSeparator3" type="VSeparator" parent="PanelContainer/HBoxContainer"]
@@ -66,7 +65,6 @@ margin_left = 206.0
 margin_right = 306.0
 margin_bottom = 26.0
 rect_min_size = Vector2( 100, 0 )
-toggle_mode = true
 text = "Items"
 
 [node name="VSeparator2" type="VSeparator" parent="PanelContainer/HBoxContainer"]

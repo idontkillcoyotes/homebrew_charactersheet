@@ -1,0 +1,139 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://ui/components/CharacterHP.tscn" type="PackedScene" id=1]
+
+[node name="CombatStats" type="MarginContainer"]
+margin_right = 150.0
+margin_bottom = 309.0
+rect_min_size = Vector2( 150, 300 )
+size_flags_horizontal = 5
+size_flags_vertical = 0
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 145.0
+margin_bottom = 304.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 133.0
+margin_bottom = 292.0
+
+[node name="CharacterHP" parent="PanelContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_bottom = 132.0
+custom_constants/margin_right = 2
+custom_constants/margin_top = 2
+custom_constants/margin_left = 2
+custom_constants/margin_bottom = 2
+
+[node name="DeathSaves" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
+margin_top = 136.0
+margin_right = 126.0
+margin_bottom = 285.0
+custom_constants/margin_right = 2
+custom_constants/margin_top = 2
+custom_constants/margin_left = 2
+custom_constants/margin_bottom = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/DeathSaves"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 124.0
+margin_bottom = 147.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/DeathSaves/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 115.0
+margin_bottom = 138.0
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/DeathSaves/PanelContainer/VBoxContainer"]
+margin_right = 108.0
+margin_bottom = 31.0
+text = "Salvaciones de Muerte"
+align = 1
+autowrap = true
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/VBoxContainer/DeathSaves/PanelContainer/VBoxContainer"]
+margin_top = 35.0
+margin_right = 108.0
+margin_bottom = 39.0
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/DeathSaves/PanelContainer/VBoxContainer"]
+margin_top = 43.0
+margin_right = 108.0
+margin_bottom = 57.0
+text = "Superadas"
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/DeathSaves/PanelContainer/VBoxContainer"]
+margin_top = 61.0
+margin_right = 108.0
+margin_bottom = 85.0
+size_flags_horizontal = 5
+custom_constants/separation = 10
+
+[node name="CheckBox1" type="CheckBox" parent="PanelContainer/VBoxContainer/DeathSaves/PanelContainer/VBoxContainer/HBoxContainer"]
+margin_left = 2.0
+margin_right = 26.0
+margin_bottom = 24.0
+size_flags_horizontal = 6
+align = 1
+
+[node name="CheckBox2" type="CheckBox" parent="PanelContainer/VBoxContainer/DeathSaves/PanelContainer/VBoxContainer/HBoxContainer"]
+margin_left = 41.0
+margin_right = 65.0
+margin_bottom = 24.0
+size_flags_horizontal = 6
+align = 1
+
+[node name="CheckBox3" type="CheckBox" parent="PanelContainer/VBoxContainer/DeathSaves/PanelContainer/VBoxContainer/HBoxContainer"]
+margin_left = 81.0
+margin_right = 105.0
+margin_bottom = 24.0
+size_flags_horizontal = 6
+align = 1
+
+[node name="Label3" type="Label" parent="PanelContainer/VBoxContainer/DeathSaves/PanelContainer/VBoxContainer"]
+margin_top = 89.0
+margin_right = 108.0
+margin_bottom = 103.0
+text = "Fallidas"
+align = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer/DeathSaves/PanelContainer/VBoxContainer"]
+margin_top = 107.0
+margin_right = 108.0
+margin_bottom = 131.0
+size_flags_horizontal = 5
+custom_constants/separation = 10
+
+[node name="CheckBox1" type="CheckBox" parent="PanelContainer/VBoxContainer/DeathSaves/PanelContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 2.0
+margin_right = 26.0
+margin_bottom = 24.0
+size_flags_horizontal = 6
+align = 1
+
+[node name="CheckBox2" type="CheckBox" parent="PanelContainer/VBoxContainer/DeathSaves/PanelContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 41.0
+margin_right = 65.0
+margin_bottom = 24.0
+size_flags_horizontal = 6
+align = 1
+
+[node name="CheckBox3" type="CheckBox" parent="PanelContainer/VBoxContainer/DeathSaves/PanelContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 81.0
+margin_right = 105.0
+margin_bottom = 24.0
+size_flags_horizontal = 6
+align = 1

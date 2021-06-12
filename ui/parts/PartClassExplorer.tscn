@@ -102,7 +102,7 @@ margin_bottom = 20.0
 rect_min_size = Vector2( 120, 0 )
 size_flags_horizontal = 6
 size_flags_vertical = 5
-text = "Nueva"
+text = "Nuevo"
 
 [connection signal="pressed" from="VBoxContainer/MarginContainer/HBoxContainer/ButtonClose" to="." method="_on_ButtonClose_pressed"]
 [connection signal="selected_item" from="VBoxContainer/MarginContainer2/ClassesList" to="." method="_on_ClassesList_selected_item"]

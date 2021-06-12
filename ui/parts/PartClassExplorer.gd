@@ -13,6 +13,7 @@ var selected : Dictionary
 
 func open():
 	self.show()
+	_set_disable_buttons(true)
 	class_list.reload()
 
 func _ready():
@@ -34,8 +35,12 @@ func _on_ButtonEdit_pressed():
 	emit_signal("edit",data,file_name)
 
 func _on_ButtonDelete_pressed():
-	#TODO: delete items
-	pass
+	var error = GameDataManager.delete_file(selected["file_name"],GameDataManager.classes_path)
+	if error != OK:
+		print("There was an error while trying to delete a class file.")
+	else:
+		_set_disable_buttons(true)
+		class_list.reload()
 
 func _on_Editor_data_saved():
 	class_list.reload()

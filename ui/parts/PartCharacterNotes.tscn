@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://ui/parts/PartCharacterNotes.gd" type="Script" id=1]
+
+[node name="CharacterNotes" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 5
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 1915.0
+margin_bottom = 1075.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 1903.0
+margin_bottom = 1063.0
+custom_constants/margin_right = 2
+custom_constants/margin_top = 2
+custom_constants/margin_left = 2
+custom_constants/margin_bottom = 2
+
+[node name="Notes" type="TextEdit" parent="PanelContainer/MarginContainer"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 1894.0
+margin_bottom = 1054.0
+
+[connection signal="text_changed" from="PanelContainer/MarginContainer/Notes" to="." method="_on_Notes_text_changed"]
