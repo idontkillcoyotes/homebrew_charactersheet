@@ -138,7 +138,7 @@ export var notes : String = ""
 
 func add_inventory_item(item:Item):
 	var entry : Dictionary = {
-		"data": item.duplicate(true),
+		"data": item,
 		"equiped" : false
 	}
 	inventory.push_back(entry)
@@ -366,7 +366,6 @@ func _get_equipped_PR_bonus()->int:
 			if equiped:
 				sum += data.get_bonus_PR()
 	return sum
-
 func _get_equipped_MR_bonus()->int:
 	var sum : int = 0
 	if inventory.size()>0:

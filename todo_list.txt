@@ -1,0 +1,4 @@
+agregar items como pociones/mis
+implementar magia
+
+arreglar inputs de attributo

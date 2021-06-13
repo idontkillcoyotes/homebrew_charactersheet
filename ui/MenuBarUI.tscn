@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://ui/MenuCharacter.gd" type="Script" id=1]
 [ext_resource path="res://ui/MenuBarUI.gd" type="Script" id=2]
@@ -6,8 +6,6 @@
 [ext_resource path="res://ui/ItemsUI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/themes/theme1.tres" type="Theme" id=5]
 [ext_resource path="res://ui/parts/PartCharacterExplorer.tscn" type="PackedScene" id=6]
-
-[sub_resource type="StyleBoxEmpty" id=1]
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
@@ -45,7 +43,6 @@ script = ExtResource( 1 )
 margin_left = 86.0
 margin_right = 90.0
 margin_bottom = 26.0
-custom_styles/separator = SubResource( 1 )
 
 [node name="ButtonClasses" type="ToolButton" parent="PanelContainer/HBoxContainer"]
 margin_left = 94.0
@@ -58,7 +55,6 @@ text = "Estilos"
 margin_left = 198.0
 margin_right = 202.0
 margin_bottom = 26.0
-custom_styles/separator = SubResource( 1 )
 
 [node name="ButtonItems" type="ToolButton" parent="PanelContainer/HBoxContainer"]
 margin_left = 206.0
@@ -67,8 +63,20 @@ margin_bottom = 26.0
 rect_min_size = Vector2( 100, 0 )
 text = "Items"
 
-[node name="VSeparator2" type="VSeparator" parent="PanelContainer/HBoxContainer"]
+[node name="VSeparator4" type="VSeparator" parent="PanelContainer/HBoxContainer"]
 margin_left = 310.0
+margin_right = 314.0
+margin_bottom = 26.0
+
+[node name="ButtonFolder" type="ToolButton" parent="PanelContainer/HBoxContainer"]
+margin_left = 318.0
+margin_right = 472.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 100, 0 )
+text = "Abrir Carpeta de datos"
+
+[node name="VSeparator2" type="VSeparator" parent="PanelContainer/HBoxContainer"]
+margin_left = 476.0
 margin_right = 1788.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
@@ -112,4 +120,5 @@ __meta__ = {
 [connection signal="close_character" from="PanelContainer/HBoxContainer/MenuCharacter" to="." method="_on_MenuCharacter_close_character"]
 [connection signal="pressed" from="PanelContainer/HBoxContainer/ButtonClasses" to="." method="_on_ButtonClasses_pressed"]
 [connection signal="pressed" from="PanelContainer/HBoxContainer/ButtonItems" to="." method="_on_ButtonItems_pressed"]
+[connection signal="pressed" from="PanelContainer/HBoxContainer/ButtonFolder" to="." method="_on_ButtonFolder_pressed"]
 [connection signal="pressed" from="PanelContainer/HBoxContainer/ButtonExit" to="." method="_on_ButtonExit_pressed"]
